@@ -1,0 +1,44 @@
+<UserControl
+    x:Class="VLAShortestPath.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Margin="0,68.5,0,51" VerticalAlignment="center">
+            <TextBlock
+                HorizontalAlignment="center"
+                FontSize="16"
+                Foreground="White"
+                Text="Menu Options"
+                TextWrapping="Wrap" />
+            <Button
+                x:Name="StartButton"
+                Height="32.5"
+                Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"
+                Click="StartButtonClick"
+                Content="Dijkstra Algorithm" />
+            <Button
+                Name="gameButton"
+                Height="32.5"
+                Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"
+                Click="gameButton_Click"
+                Content="Game" />
+            <Button
+                x:Name="AboutButton"
+                Height="32.5"
+                Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"
+                Click="AboutButtonClick"
+                Content="About" />
+        </StackPanel>
+        <Image
+            Width="380"
+            Height="262"
+            HorizontalAlignment="center"
+            Margin="105,8,172,61"
+            VerticalAlignment="center"
+            Source="/VLAShortestPath;component/Images/VLA-SP-Illustration.png"
+            Stretch="Fill" />
+    </Grid>
+</UserControl>

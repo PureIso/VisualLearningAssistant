@@ -1,0 +1,51 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VLALinkedList.Design.LabelNodeTail"
+    x:Name="VLALabelNodeTail" Width="63.333" Height="98">
+
+    <Grid x:Name="LayoutRoot">
+        <Path
+            Data="M16,0 L15.5,63.833333 -0.5,63.166995 32.166667,96.500502 62.16603,63.833666 47.499258,63.833666 47.499258,-0.16666754 z"
+            Margin="-0.5,-0.167,0.166,0.5" Stretch="Fill" Stroke="Black" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.949,0.853" StartPoint="0.335,0.046">
+                    <GradientStop Color="Red" Offset="0.79" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <Path
+            Data="M23.750267,7.5006716 L23.666931,72.000107 15.5,71.83333 32.000708,87.999967 47.334364,71.666777 40.334399,71.666777 39.750785,7.5006716 z"
+            Margin="15.5,7.5,15,9" Stretch="Fill" Stroke="Black" RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="-0.362,0.195">
+                    <GradientStop Color="#FF2E18CE" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <TextBlock TextWrapping="Wrap" Margin="27.5,23.5,27.313,10.66" d:LayoutOverrides="Height">
+            <Run Language="en-ie" Text="TAIL" />
+        </TextBlock>
+    </Grid>
+</UserControl>

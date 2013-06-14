@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="ResourceDictionaryName">Loc-zh-CN</system:String>
+
+    <!--Menu Items-->
+    <system:String x:Key="Languages">语言</system:String>
+    <system:String x:Key="Help">帮助</system:String>
+    <system:String x:Key="About">关于</system:String>
+    <system:String x:Key="Update">更新</system:String>
+    <system:String x:Key="Option">选项</system:String>
+    <system:String x:Key="Close">关闭</system:String>
+    <system:String x:Key="BackButton">返回</system:String>
+    <system:String x:Key="Save">保存</system:String>
+    <system:String x:Key="Add-On">添加</system:String>
+    <system:String x:Key="MainInstructions">请选着和一个拓展插件，点击插件按钮载入</system:String>
+    <system:String x:Key="LoadPluginButton">载入</system:String>
+    <system:String x:Key="ExpanderFilter">插件过滤器</system:String>
+
+    <!--Option-->
+    <system:String x:Key="OptionTheme">应用主题: </system:String>
+
+    <!--Tabs-->
+    <system:String x:Key="Log">登录</system:String>
+    <system:String x:Key="Display">显示</system:String>
+
+    <!--Left Scroll Viewer-->
+    <!-- Plug-in -->
+    <system:String x:Key="ExpanderPlugInName">插件</system:String>
+    <system:String x:Key="NameHeader">名字</system:String>
+    <system:String x:Key="ModuleNameHeader">方法名字</system:String>
+    <system:String x:Key="FilterModuleListLabel">过滤器方法列表:</system:String>
+    <!--Plug-in Info-->
+    <system:String x:Key="ExpanderPluginInfoName">插件信息</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginName">名字:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginAuthor">权限:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginVersion">版本:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginLanguages">支持语言:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginDescription">概述:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginModuleName">方法名字:</system:String>
+
+</ResourceDictionary>

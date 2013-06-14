@@ -1,0 +1,82 @@
+<Window
+    x:Class="VisualLearningAssistant.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="292"
+    MaxHeight="292"
+    MaxWidth="490"
+    MinHeight="292"
+    MinWidth="490"
+    Width="490"
+    AllowsTransparency="True"
+    Title="About"
+    WindowStartupLocation="centerOwner"
+    WindowStyle="None">
+    <Border
+        Name="MainBorder"
+        Background="White"
+        BorderBrush="#FF7272C2"
+        BorderThickness="2">
+        <Grid MouseLeftButtonDown="DragMove">
+            <Image
+                x:Name="image1"
+                Width="448"
+                Height="80"
+                VerticalAlignment="Top"
+                Source="/Images\Project-Icon3.png"
+                Stretch="Fill" />
+            <Grid x:Name="MainGrid" Margin="0,109.28,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF1D1DC8" />
+                        <GradientStop Offset="0.115" Color="#FF8383E2" />
+                        <GradientStop Offset="0.044" Color="White" />
+                        <GradientStop Offset="0.252" Color="#FF8383E2" />
+                        <GradientStop Offset="0.911" Color="#A56666FD" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <RichTextBox
+                    Name="InfoRichTextBox"
+                    IsDocumentEnabled="True"
+                    IsReadOnly="True"
+                    Background="Transparent"
+                    VerticalScrollBarVisibility="Auto"
+                    x:FieldModifier="private" Margin="8,19,8,37">
+                    <FlowDocument
+                        Name="rtbFlowDoc"
+                        PageWidth="{Binding ElementName=PageGrid, Path=ActualWidth}" />
+                </RichTextBox>
+
+
+                <Button
+                    x:Name="closeButton"
+                    Width="75"
+                    Height="23"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,8,8"
+                    VerticalAlignment="Bottom"
+                    Click="CloseButtonClick"
+                    Content="{DynamicResource Close}">
+                    <Button.Background>
+                        <RadialGradientBrush GradientOrigin="0.487,-0.177" RadiusX="0.567" RadiusY="0.567">
+                            <GradientStop Offset="0" Color="#FF7272C2" />
+                            <GradientStop Offset="0.086" Color="#FF9292E3" />
+                            <GradientStop Offset="0.254" Color="#FF8D8DED" />
+                            <GradientStop Offset="1" Color="#FF7272C2" />
+                        </RadialGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <TextBlock
+                x:Name="TextBlockVersion"
+                Width="160.46"
+                HorizontalAlignment="Right"
+                Margin="0,84,0,0"
+                VerticalAlignment="Top"
+                FontWeight="Bold"
+                Text="Version: "
+                TextWrapping="Wrap" />
+        </Grid>
+    </Border>
+</Window>

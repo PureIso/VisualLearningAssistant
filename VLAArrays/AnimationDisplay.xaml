@@ -1,0 +1,177 @@
+<UserControl
+    x:Class="VLAArrays.AnimationDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    d:DesignHeight="462"
+    d:DesignWidth="576"
+    mc:Ignorable="d">
+    <Grid Name="SuperGrid" SizeChanged="GridSizeChanged">
+        <Grid
+            x:Name="MainGrid"
+            Height="238"
+            VerticalAlignment="Top"
+            Background="#FFDCDC8D">
+            <Button
+                x:Name="BackToMainMenuButton"
+                Width="75"
+                Height="23"
+                HorizontalAlignment="Right"
+                Margin="0,2,8,0"
+                VerticalAlignment="Top"
+                Click="BackToMainMenuClick"
+                Content="Back" />
+            <GroupBox
+                x:Name="OptionGroupBox"
+                Width="313"
+                Height="205"
+                HorizontalAlignment="Left"
+                Margin="8,25,0,0"
+                VerticalAlignment="Top"
+                BorderBrush="Black"
+                Header="Array Setup">
+                <Grid>
+                    <Label
+                        Height="28"
+                        HorizontalAlignment="Left"
+                        Margin="9,42,0,0"
+                        VerticalAlignment="Top"
+                        Content="Set Value (string) :" />
+                    <TextBox
+                        x:Name="ArrayValuesTextBox"
+                        Width="164"
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Margin="131,47,0,0"
+                        VerticalAlignment="Top"
+                        IsEnabled="False" />
+                    <Button
+                        x:Name="AllocateMemoryButton"
+                        Width="108"
+                        Height="23"
+                        HorizontalAlignment="Left"
+                        Margin="106,151.04,0,0"
+                        VerticalAlignment="Top"
+                        Click="AllocateMemoryButtonClick"
+                        Content="Allocate Memory"
+                        IsEnabled="False" />
+                    <Button
+                        x:Name="NewArrayButton"
+                        Height="23"
+                        Margin="131,8,87,0"
+                        VerticalAlignment="Top"
+                        Click="NewArrayButtonClick"
+                        Content="New []"
+                        d:LayoutOverrides="HorizontalAlignment" />
+                    <Button
+                        Name="BuildArrayButton"
+                        Width="75"
+                        Height="23"
+                        HorizontalAlignment="Right"
+                        Margin="0,151.04,8,0"
+                        VerticalAlignment="Top"
+                        Click="BuildArrayButtonClick"
+                        Content="Build"
+                        IsEnabled="False"
+                        d:LayoutOverrides="HorizontalAlignment" />
+                    <Grid Height="50.04" Margin="8,0,8,35" VerticalAlignment="Bottom">
+                        <Rectangle Fill="#FFA6C097" Stroke="Black" />
+                        <Path
+                            Width="16"
+                            Height="14.5"
+                            HorizontalAlignment="Left"
+                            Margin="1.25,1.25,0,0"
+                            VerticalAlignment="Top"
+                            Data="M0.5,0.5 L22.25,0.5 11.25,10.54 0.5,20.25 z"
+                            Fill="#FFB2B247"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Fill">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="-180" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path
+                            Width="13.667"
+                            Height="13"
+                            HorizontalAlignment="Left"
+                            Margin="2.583,1.749,0,0"
+                            VerticalAlignment="Top"
+                            Data="M0.5,0.5 L22.25,0.5 11.25,10.54 0.5,20.25 z"
+                            Fill="#FFA5A536"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Fill">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="-180" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path
+                            Width="11.667"
+                            Height="10.875"
+                            HorizontalAlignment="Left"
+                            Margin="3.458,2.749,0,0"
+                            VerticalAlignment="Top"
+                            Data="M0.5,0.5 L22.25,0.5 11.25,10.54 0.5,20.25 z"
+                            Fill="#FF89892A"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Fill">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="-180" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            Margin="24.5,0,0,0"
+                            VerticalAlignment="Top"
+                            Foreground="#FFEB1B1B"
+                            Text="How to use Set Value:"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            Margin="24.5,15.96,0,18.12"
+                            Text="Each String value is separated by a comma ( , )."
+                            TextWrapping="Wrap"
+                            d:LayoutOverrides="Height" />
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            Margin="24.5,0,0,2.16"
+                            VerticalAlignment="Bottom"
+                            Text="Example: Foo,Bar"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                    <Label
+                        Height="28"
+                        HorizontalAlignment="Left"
+                        Margin="12,8,0,0"
+                        VerticalAlignment="Top"
+                        Content="Create new Array:" />
+                </Grid>
+            </GroupBox>
+            <GroupBox
+                x:Name="InformationGroupBox"
+                Width="237"
+                HorizontalAlignment="Left"
+                Margin="323,25,0,8"
+                BorderBrush="Black"
+                Header="Information">
+                <TextBox x:Name="InformationTextBox" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+            </GroupBox>
+        </Grid>
+        <Canvas x:Name="DisplayCanvas" Margin="0,238,0,0" />
+    </Grid>
+</UserControl>

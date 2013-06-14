@@ -1,0 +1,27 @@
+<UserControl
+    x:Class="VLAShortestPath.Info"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    mc:Ignorable="d">
+    <Grid>
+        <Button
+            Width="73"
+            Height="23"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="BackToMainMenuClick"
+            Content="{DynamicResource BackButton}" />
+        <Grid x:Name="PageGrid" Margin="8,39,8,8">
+            <RichTextBox
+                Name="InfoRichTextBox"
+                IsDocumentEnabled="True"
+                IsReadOnly="True"
+                VerticalScrollBarVisibility="Auto"
+                x:FieldModifier="private">
+                <FlowDocument Name="rtbFlowDoc" PageWidth="{Binding ElementName=PageGrid, Path=ActualWidth}" />
+            </RichTextBox>
+        </Grid>
+    </Grid>
+</UserControl>

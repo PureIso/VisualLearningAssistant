@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="ResourceDictionaryName">Loc-en-IE</system:String>
+
+    <!--Menu Items-->
+    <system:String x:Key="Languages">Languages</system:String>
+    <system:String x:Key="Help">Help</system:String>
+    <system:String x:Key="About">About</system:String>
+    <system:String x:Key="Update">Update</system:String>
+    <system:String x:Key="Option">Options</system:String>
+    <system:String x:Key="Close">Close</system:String>
+    <system:String x:Key="BackButton">Back</system:String>
+    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="Add-On">Add-On</system:String>
+    <system:String x:Key="MainInstructions">Select a Plug-In from the Plug-In Expander then load the Plug-In by clicking the load button.</system:String>
+    <system:String x:Key="LoadPluginButton">Load</system:String>
+    <system:String x:Key="ExpanderFilter">Plug-in Filter</system:String>
+
+    <!--Option-->
+    <system:String x:Key="OptionTheme">Application Themes: </system:String>
+    <system:String x:Key="Apply">Apply</system:String>
+
+    <!--Tabs-->
+    <system:String x:Key="Log">Log</system:String>
+    <system:String x:Key="Display">Display</system:String>
+
+    <!--Left Scroll Viewer-->
+    <!-- Plug-in -->
+    <system:String x:Key="ExpanderPlugInName">Plug-In</system:String>
+    <system:String x:Key="NameHeader">Name</system:String>
+    <system:String x:Key="ModuleNameHeader">Version</system:String>
+    <system:String x:Key="FilterModuleListLabel">Filter Module List:</system:String>
+    <!--Plug-in Info-->
+    <system:String x:Key="ExpanderPluginInfoName">Plug-in Information</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginName">Name:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginAuthor">Author:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginVersion">Version:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginLanguages">Supported Languages:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginDescription">Description:</system:String>
+    <system:String x:Key="ExpanderPluginInfoPluginModuleName">Module Name:</system:String>
+
+</ResourceDictionary>

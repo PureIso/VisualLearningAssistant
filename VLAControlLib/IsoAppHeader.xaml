@@ -1,0 +1,138 @@
+<UserControl
+    x:Name="UserControl"
+    x:Class="VLAControlLib.IsoAppHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:VLAControlLib"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    d:DesignHeight="33"
+    d:DesignWidth="640"
+    mc:Ignorable="d">
+    <Grid x:Name="MainLayoutGrid">
+        <!--Grid Layout Definition to keep things clean-->
+        <Grid.ColumnDefinitions>
+            <!--Colums are Across aka vertical, simple boarder all the way around-->
+            <ColumnDefinition Width="4" />
+            <ColumnDefinition />
+            <!--Allows the content the fill the area allowed-->
+            <ColumnDefinition Width="0.75" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!--Rows aka Horizontal , simple boarder all the way around-->
+            <RowDefinition Height="4" />
+            <RowDefinition Height="25" />
+            <!--Form Title and Main Button area-->
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--Title Bar-->
+        <!--Title Bar-->
+        <!--Title Bar-->
+        <!--Title Bar-->
+        <Rectangle
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="3"
+            RadiusX="6.5"
+            RadiusY="6.5"
+            Stroke="Black"
+            StrokeThickness="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="0" Color="#FF0C0C0C" />
+                    <GradientStop Offset="0.077" Color="White" />
+                    <GradientStop Offset="0.189" Color="#721B1919" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid x:Name="TitleBarGrid" Grid.Column="1" Grid.Row="1">
+            <!--TitleBar Boarder-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="19*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!--Button Section-->
+                <ColumnDefinition Width="30" />
+                <!--Form Name-->
+                <ColumnDefinition />
+                <ColumnDefinition Width="80.417" />
+            </Grid.ColumnDefinitions>
+            <!--End of Boarder-->
+            <TextBlock
+                x:Name="FormTitleBlock"
+                Grid.Column="1"
+                Grid.RowSpan="2"
+                Margin="8,2,4,2"
+                d:IsHidden="True"
+                Foreground="White">
+                <Run Text="WPF Game Editor" />
+            </TextBlock>
+            <!--End of Boarder-->
+            <Grid Grid.Column="2" Grid.RowSpan="2" Margin="-4,2,2.75,0">
+                <Grid.ColumnDefinitions>
+                    <!--Close Button Space-->
+                    <ColumnDefinition Width="25" />
+                    <!--Minimise Button Space-->
+                    <ColumnDefinition Width="25" />
+                    <!--Expand Button Space-->
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <Rectangle Stroke="Black">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0.5,1.044" EndPoint="0.5,0.025">
+                            <GradientStop Offset="0" Color="#FF292929" />
+                            <GradientStop Offset="1" Color="White" />
+                            <GradientStop Offset="0.472" Color="#FF292929" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Column="1" Stroke="Black">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0.5,1.044" EndPoint="0.5,0.025">
+                            <GradientStop Offset="0" Color="#FF292929" />
+                            <GradientStop Offset="1" Color="White" />
+                            <GradientStop Offset="0.472" Color="#FF292929" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Grid.Column="2" Margin="0,0,-6.667,0" Stroke="Black">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0.5,1.044" EndPoint="0.5,0.025">
+                            <GradientStop Offset="0" Color="#FF292929" />
+                            <GradientStop Offset="1" Color="White" />
+                            <GradientStop Offset="0.472" Color="#FF292929" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <local:IsoMinimizeButton Margin="1,0" />
+                <local:IsoMaximizeButton Grid.Column="1" Margin="1,0" />
+                <local:IsoCloseButton Grid.Column="2" Margin="1.02,0.999,-5.73,1.062" />
+            </Grid>
+            <Rectangle
+                Width="2.166"
+                Grid.Column="1"
+                Grid.RowSpan="2"
+                HorizontalAlignment="Left"
+                Margin="1.834,2,0,2"
+                Fill="Gray"
+                Stroke="Gray" />
+            <Grid Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <!-- Title Name (Column 2)-->
+                    <ColumnDefinition Width="24" />
+                    <!--Image Icon goes here (Column 0)-->
+                    <ColumnDefinition Width="0" />
+                    <!--Space Between Image and Title Name (Column 1)-->
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="ImageIcon"
+                    Width="24"
+                    Grid.ColumnSpan="2"
+                    Stretch="Uniform" />
+            </Grid>
+        </Grid>
+        <!--Title Bar-->
+        <!--Title Bar-->
+    </Grid>
+</UserControl>

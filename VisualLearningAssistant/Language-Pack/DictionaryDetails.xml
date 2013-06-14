@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ArrayOfLanguages xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Languages Name="Spanish">
+    <Loc-Name>es-ES</Loc-Name>
+  </Languages>
+
+  <Languages Name="English">
+    <Loc-Name>en-IE</Loc-Name>
+  </Languages>
+
+  <Languages Name="German">
+    <Loc-Name>de-DE</Loc-Name>
+  </Languages>
+
+  <Languages Name="Chinese">
+    <Loc-Name>zh-CN</Loc-Name>
+  </Languages>
+
+</ArrayOfLanguages>

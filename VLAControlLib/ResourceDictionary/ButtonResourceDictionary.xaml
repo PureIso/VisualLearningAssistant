@@ -1,0 +1,158 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    mc:Ignorable="d">
+
+    <!-- Resource dictionary entries should be defined here. -->
+    <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#F3F3F3" Offset="0" />
+        <GradientStop Color="#EBEBEB" Offset="0.5" />
+        <GradientStop Color="#DDDDDD" Offset="0.5" />
+        <GradientStop Color="#CDCDCD" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070" />
+    <ControlTemplate x:Key="ButtonControlMini" TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Storyboard1">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)"
+                                              Storyboard.TargetName="rectangle">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FF5969D5" />
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid>
+            <Rectangle x:Name="rectangle" Fill="#00FBFBFB" RadiusY="0.312" RadiusX="0.312" Stroke="#00000000" />
+            <Rectangle Fill="#FFFBFBFB" RadiusY="0.312" RadiusX="0.312" Stroke="#00000000" Margin="1.562,0,1.75,1.188"
+                       Height="2.73" VerticalAlignment="Bottom" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="Storyboard1_BeginStoryboard" />
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}" />
+                </Trigger.EnterActions>
+                <Setter Property="Fill" TargetName="rectangle" Value="#00FBFBFB" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ButtonControlMax" TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Storyboard1">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)"
+                                              Storyboard.TargetName="rectangle">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FF5969D5" />
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid>
+            <Rectangle x:Name="rectangle" Fill="#00FBFBFB" RadiusY="0.312" RadiusX="0.312" Stroke="#00000000" />
+            <Path
+                Data="M0.5,3.0830001 L19.605,3.0830001 19.605,17.479 0.5,17.479 z M2.75,0.5 L21.855,0.5 21.855,14.896 19.688,14.896 19.771334,3.0203332 2.75,2.9369998 z"
+                Fill="#00FBFBFB" Height="Auto" Margin="2.979,3.063,3.333,3.188" Stretch="Fill" Stroke="#FFF9F9F9"
+                VerticalAlignment="Stretch" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="Storyboard1_BeginStoryboard" />
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}" />
+                </Trigger.EnterActions>
+                <Setter Property="Fill" TargetName="rectangle" Value="#00FBFBFB" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ButtonControlClose" TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Storyboard1">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)"
+                                              Storyboard.TargetName="rectangle">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FF5969D5" />
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid Height="Auto" Margin="1,1,0.313,1.188" d:LayoutOverrides="HorizontalAlignment" Width="Auto">
+            <Rectangle x:Name="rectangle" Fill="#00FBFBFB" RadiusY="0.312" RadiusX="0.312" Stroke="#00000000"
+                       Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+            <Path
+                Data="M10.291,0.5 L11.397,0.5 C11.569313,0.5 11.709,0.63968754 11.709,0.81200027 L11.709,9.9789999 20.875999,9.9789999 C21.048313,9.9790001 21.188,10.118687 21.188,10.291 L21.188,11.397 C21.188,11.569313 21.048313,11.709 20.875999,11.709 L11.709,11.709 11.709,20.876 C11.709,21.048313 11.569313,21.188 11.397,21.188 L10.291,21.188 C10.118688,21.188 9.9790001,21.048313 9.9790001,20.876 L9.9790001,11.709 0.8120001,11.709 C0.63968718,11.709 0.5,11.569313 0.5,11.397 L0.5,10.291 C0.5,10.118687 0.63968718,9.9790001 0.8120001,9.9789999 L9.9790001,9.9789999 9.9790001,0.81200027 C9.9790001,0.63968754 10.118688,0.5 10.291,0.5 z"
+                Fill="#FFFBFBFB" Height="Auto" Margin="6.782,-0.392,6.287,3.495"
+                RenderTransformOrigin="0.500000006332032,0.500000010553386" Stretch="Fill" Stroke="#00000000"
+                VerticalAlignment="Stretch" Width="Auto" HorizontalAlignment="Stretch">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="44.93" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="Storyboard1_BeginStoryboard" />
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="Storyboard1_BeginStoryboard" Storyboard="{StaticResource Storyboard1}" />
+                </Trigger.EnterActions>
+                <Setter Property="Fill" TargetName="rectangle" Value="#00FBFBFB" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="ButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true"
+                               Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                               StrokeThickness="1" StrokeDashArray="1 2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
+        <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="HorizontalContentAlignment" Value="center" />
+        <Setter Property="VerticalContentAlignment" Value="center" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Microsoft_Windows_Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}"
+                                                           RenderMouseOver="{TemplateBinding IsMouseOver}"
+                                                           RenderPressed="{TemplateBinding IsPressed}"
+                                                           RenderDefaulted="{TemplateBinding IsDefaulted}"
+                                                           SnapsToDevicePixels="true"
+                                                           Background="{DynamicResource Brush2}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Microsoft_Windows_Themes:ButtonChrome>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="Background" TargetName="Chrome" Value="{DynamicResource Brush1}" />
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true">
+                            <Setter Property="RenderPressed" TargetName="Chrome" Value="true" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#ADADAD" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

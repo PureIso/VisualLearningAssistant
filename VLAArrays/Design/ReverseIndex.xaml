@@ -1,0 +1,73 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="VLAArrays.Design.ReverseIndexNode"
+    x:Name="VLAReverseIndex" Width="42.333" Height="58.333">
+
+    <Grid x:Name="LayoutRoot">
+        <Rectangle RadiusY="4.554" RadiusX="4.554">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.523,1.044" MappingMode="RelativeToBoundingBox"
+                                     StartPoint="0.498,-0.103">
+                    <GradientStop Color="White" />
+                    <GradientStop Color="White" Offset="0.13" />
+                    <GradientStop Color="#FFAF7E35" Offset="0.092" />
+                    <GradientStop Color="#FFAF7E35" Offset="0.877" />
+                    <GradientStop Color="#FFC0AF94" Offset="0.747" />
+                    <GradientStop Color="#FFB18543" Offset="0.631" />
+                    <GradientStop Color="#FFDEA245" Offset="0.246" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Margin="17.376,0,0,16.096" Stroke="Black" Height="4" VerticalAlignment="Bottom"
+                   RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="17.167" Fill="#FFF70000">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Margin="6.166,0,0,16.096" Stroke="Black" HorizontalAlignment="Left" Width="17.167" Height="4"
+                   VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Fill="#FFF30000">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Path
+            Data="M0,0 L1.7360001,0 5.7359999,0 5.7359999,1.8339996 1.7360001,1.8339996 1.7360001,18.75 5.7359999,18.75 5.7359999,20.584 1.7360001,20.584 0,20.584 z"
+            Margin="3.5,4.75,0,29.429" Stretch="Fill" Stroke="Black" HorizontalAlignment="Left" Width="5.736">
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD23E3E" Offset="0" />
+                    <GradientStop Color="#FFF90000" Offset="1" />
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <Path
+            Data="M0,0 L1.7360001,0 5.7359999,0 5.7359999,1.8339996 1.7360001,1.8339996 1.7360001,18.75 5.7359999,18.75 5.7359999,20.584 1.7360001,20.584 0,20.584 z"
+            Margin="34.499,5,0,27.512" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Stroke="Black"
+            HorizontalAlignment="Left" Width="5.736" Fill="#FFFF0909">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="180" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+        <TextBlock x:Name="LocationTextBlock" TextWrapping="Wrap" FontSize="18.667" TextAlignment="center"
+                   Margin="9.236,4.75,0,29.429" Text="AA" Width="25.039" HorizontalAlignment="Left" />
+    </Grid>
+</UserControl>
