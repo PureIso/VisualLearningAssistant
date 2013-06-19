@@ -161,7 +161,7 @@ namespace VLAShortestPath
                     if (_back == false)
                         MessageBox.Show("Game Over!", "VLA - Shortest Path", MessageBoxButton.OK,
                                         MessageBoxImage.Information);
-                    if (uint.Parse(scoreTextBox.Text) > _highestScore)
+                    if (uint.Parse(scoreTextBox.Text) > _highestScore && _back == false)
                     {
                         MessageBox.Show("Congratulations!" + Environment.NewLine +
                                         "New Highest Score!", "VLA - Shortest Path", MessageBoxButton.OK,

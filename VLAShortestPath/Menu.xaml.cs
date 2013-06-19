@@ -132,8 +132,17 @@ namespace VLAShortestPath
             StreamWriter streamwriter = new StreamWriter(file);
             binaryformatter.Serialize(streamwriter.BaseStream, hashtable);
             file.Close();
+
+
+            MessageBoxResult result = MessageBox.Show(saveComboBox.Text + " Saved.", "Shortest Path",
+                                                      MessageBoxButton.OK, MessageBoxImage.Information);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
         }
 
+        //TODO: Enable the algorithm box
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
             if (saveComboBox.SelectedIndex == -1) return;
@@ -169,6 +178,13 @@ namespace VLAShortestPath
                 _menu.toVertexSPComboBox.Items.Add(name);
             }
             _menu.DijkstraAlgorithm.ReDraw(_menu.mainCanvas);
+
+            MessageBoxResult result = MessageBox.Show(saveComboBox.Text + " Loaded.", "Shortest Path",
+                                                      MessageBoxButton.OK, MessageBoxImage.Information);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void DragMove(object sender, MouseButtonEventArgs e)
