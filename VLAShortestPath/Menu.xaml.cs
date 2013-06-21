@@ -142,7 +142,6 @@ namespace VLAShortestPath
             }
         }
 
-        //TODO: Enable the algorithm box
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
             if (saveComboBox.SelectedIndex == -1) return;
@@ -183,6 +182,7 @@ namespace VLAShortestPath
                                                       MessageBoxButton.OK, MessageBoxImage.Information);
             if (result == MessageBoxResult.OK)
             {
+                _menu.EnableUtil();
                 this.Close();
             }
         }
