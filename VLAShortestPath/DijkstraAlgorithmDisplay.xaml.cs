@@ -113,16 +113,13 @@ namespace VLAShortestPath
         private void NewAlgorithmsButtonClick(object sender, RoutedEventArgs e)
         {
             DijkstraAlgorithm = null;
-            ConnectGroupBox.IsEnabled = true;
-            FindGroupBox.IsEnabled = true;
             amountOfVertexTextBox.Text = "";
             mainCanvas.Children.Clear();
-            amountOfVertexTextBox.IsEnabled = true;
-            amountOfVertexButton.IsEnabled = true;
             fromVertexComboBox.Items.Clear();
             toVertexComboBox.Items.Clear();
             fromVertexSPComboBox.Items.Clear();
             toVertexSPComboBox.Items.Clear();
+            EnableUtil();
         }
 
         private void BackToMainMenuClick(object sender, RoutedEventArgs e)
@@ -134,6 +131,14 @@ namespace VLAShortestPath
         {
             SaveMenu saveMenu = new SaveMenu(this);
             saveMenu.ShowDialog();
+        }
+
+        internal void EnableUtil()
+        {
+            amountOfVertexTextBox.IsEnabled = true;
+            amountOfVertexButton.IsEnabled = true;
+            ConnectGroupBox.IsEnabled = true;
+            FindGroupBox.IsEnabled = true;
         }
     }
 }
