@@ -172,12 +172,12 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VLAControlLib\VLAControlLib.csproj">
-      <Project>{4D85DDC5-17C1-4DC3-B1FF-C97995CB264A}</Project>
+    <ProjectReference Include="..\Frameworks\VLAControlLib\VLAControlLib.csproj">
+      <Project>{4d85ddc5-17c1-4dc3-b1ff-c97995cb264a}</Project>
       <Name>VLAControlLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VLAPluginLib\VLAPluginLib.csproj">
-      <Project>{2D6CDDA3-B88F-4BD3-B225-1BE9E57230D3}</Project>
+    <ProjectReference Include="..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
+      <Project>{2d6cdda3-b88f-4bd3-b225-1be9e57230d3}</Project>
       <Name>VLAPluginLib</Name>
     </ProjectReference>
   </ItemGroup>

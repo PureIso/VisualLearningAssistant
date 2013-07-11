@@ -19,31 +19,50 @@
 // //========================================================================//
 // //========================================================================//
 // //	Author:			Olawale Egbeyemi
-// //	Solution Name:	VisualLearningAssistant	
-// //	File Name:		VertexArrow.xaml.cs
-// //	Created:		06-04-2013 Time: 00:10
-// //	Last Edited:	16-04-2013 Time: 21:41
+// //	Solution Name:	VLAHuffman	
+// //	File Name:		AnimationDisplay.xaml.cs
+// //	Created:		14-04-2013 Time: 18:47
+// //	Last Edited:	16-04-2013 Time: 20:45
 // //=======================================================================//
 // //=======================================================================//
 
 #endregion
 
-#region
+using System.Windows;
+using VLAControlLib;
+using VLAHuffman.Logic;
 
-using System.Windows.Controls;
-
-#endregion
-
-namespace VLAShortestPath
+namespace VLAHuffman
 {
     /// <summary>
-    ///     Interaction logic for VertexArrow.xaml
+    ///     Interaction logic for AnimationDisplay.xaml
     /// </summary>
-    public partial class VertexArrow : UserControl
+    public partial class AnimationDisplay
     {
-        public VertexArrow()
+        private HuffmanTree _ht;
+
+        public AnimationDisplay()
         {
             InitializeComponent();
+        }
+
+        private void BuildHuffmanTree_Click(object sender, RoutedEventArgs e)
+        {
+            _ht = new HuffmanTree();
+            _ht.Build(BuildTreeTextBox.Text);
+            MainCanvas.Children.Clear();
+            _ht.DrawTree(MainCanvas, 5, 5, 1);
+        }
+
+        private void NewTreeButton_Click(object sender, RoutedEventArgs e)
+        {
+            BuildHuffmanTreeButton.IsEnabled = true;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Switch the page to the Info Page
+            Switcher.Switch(new Main(), EntryPoint.HostDefaultPage);
         }
     }
 }

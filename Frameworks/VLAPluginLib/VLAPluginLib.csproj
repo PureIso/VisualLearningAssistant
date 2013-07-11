@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VLAControlLib\VLAControlLib.csproj">
-      <Project>{4D85DDC5-17C1-4DC3-B1FF-C97995CB264A}</Project>
+      <Project>{4d85ddc5-17c1-4dc3-b1ff-c97995cb264a}</Project>
       <Name>VLAControlLib</Name>
     </ProjectReference>
   </ItemGroup>

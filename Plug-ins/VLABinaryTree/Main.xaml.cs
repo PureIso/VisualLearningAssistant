@@ -19,31 +19,51 @@
 // //========================================================================//
 // //========================================================================//
 // //	Author:			Olawale Egbeyemi
-// //	Solution Name:	VisualLearningAssistant	
-// //	File Name:		WeightDesign.xaml.cs
-// //	Created:		06-04-2013 Time: 00:10
-// //	Last Edited:	16-04-2013 Time: 21:41
+// //	Solution Name:	VLABinaryTree	
+// //	File Name:		Main.xaml.cs
+// //	Created:		16-04-2013 Time: 20:33
+// //	Last Edited:	16-04-2013 Time: 20:38
 // //=======================================================================//
 // //=======================================================================//
 
 #endregion
 
-#region
+using System.Windows;
+using VLAControlLib;
 
-using System.Windows.Controls;
+//===============================================
+//Author:      Ola
+//Description: VLA Huffman Main Page
+//===============================================
 
-#endregion
-
-namespace VLAShortestPath
+namespace VLABinaryTree
 {
     /// <summary>
-    ///     Interaction logic for WeightDesign.xaml
+    ///     Interaction logic for Main.xaml
     /// </summary>
-    public partial class WeightDesign : UserControl
+    public partial class Main
     {
-        public WeightDesign()
+        public Main()
         {
             InitializeComponent();
+        }
+
+        private void StartButtonClick(object sender, RoutedEventArgs e)
+        {
+            //Switch the page to the AnimationDisplay Page
+            Switcher.Switch(new BinaryTreeDisplay(), EntryPoint.HostDefaultPage);
+        }
+
+        private void AboutButtonClick(object sender, RoutedEventArgs e)
+        {
+            //Switch the page to the Info Page
+            Switcher.Switch(new Info(), EntryPoint.HostDefaultPage);
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            //Switch the page to the AnimationDisplay Page
+            Switcher.Switch(new AVLBinaryTreeDisplay(), EntryPoint.HostDefaultPage);
         }
     }
 }

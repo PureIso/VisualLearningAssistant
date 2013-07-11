@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\VisualLearningAssistant\bin\Debug\Plug-in\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,8 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VLAPluginLib\VLAPluginLib.csproj">
-      <Project>{2D6CDDA3-B88F-4BD3-B225-1BE9E57230D3}</Project>
+    <ProjectReference Include="..\..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
+      <Project>{2d6cdda3-b88f-4bd3-b225-1be9e57230d3}</Project>
       <Name>VLAPluginLib</Name>
     </ProjectReference>
   </ItemGroup>
