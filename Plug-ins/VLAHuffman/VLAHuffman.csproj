@@ -37,14 +37,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="VLAControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Framework\VLAControlLib.dll</HintPath>
-    </Reference>
-    <Reference Include="VLAPluginLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Framework\VLAPluginLib.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +77,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\VLAIllustration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Frameworks\VLAControlLib\VLAControlLib.csproj">
+      <Project>{4d85ddc5-17c1-4dc3-b1ff-c97995cb264a}</Project>
+      <Name>VLAControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
+      <Project>{2d6cdda3-b88f-4bd3-b225-1be9e57230d3}</Project>
+      <Name>VLAPluginLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
