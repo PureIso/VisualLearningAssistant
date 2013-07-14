@@ -11,3 +11,4 @@ xcopy %0\..\Plug-ins\VLALinkedList\bin\Debug\VLALinkedList.dll %0\..\Distributio
 xcopy %0\..\Plug-ins\VLAShortestPath\bin\Debug\VLAShortestPath.dll %0\..\Distribution\Debug\Plug-in\
 xcopy %0\..\Plug-ins\VLABinaryTree\bin\Debug\VLABinaryTree.dll %0\..\Distribution\Debug\Plug-in\
 xcopy %0\..\Plug-ins\VLAHuffman\bin\Debug\VLAHuffman.dll %0\..\Distribution\Debug\Plug-in\
+xcopy %0\..\Plug-ins\VLAGenetics\bin\Debug\VLAGenetics.dll %0\..\Distribution\Debug\Plug-in\
