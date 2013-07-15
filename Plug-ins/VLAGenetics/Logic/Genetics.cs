@@ -9,32 +9,40 @@ namespace VLAGenetics.Logic
     /// </summary>
     public class Genetics
     {
-        public readonly List<Chromosome> CurrentGeneration;
-        public List<Individuals> IndividualsPairs;
+        public List<Chromosome> CurrentGeneration;
+        public List<Individual> IndividualPairs;
         public List<Chromosome> CrossoverPair;
+        public List<Chromosome> MutatedPair;
         private const int CrossoverProbability = 50;
-      
-        /// <summary>
-        /// This the population of candidate solution to 
-        /// an optimization problem is evolved toward better solutions.
-        /// </summary>
-        public struct Individuals
-        {
-            public Chromosome ParentOne;
-            public Chromosome ParentTwo;
-        }
+        private const int MutationProbability = 25;
+        public int Population;
+        private Chromosome _fitness;
+        public int currentHighestFitness;
 
+        /// <summary>
+        /// Generate random initial population
+        /// </summary>
+        /// <param name="population"></param>
+        /// <param name="fitness"></param>
         public Genetics(int population, Chromosome fitness)
         {
+            Population = population;
+            _fitness = fitness;
+
             //Create random chromosome for our population
             CurrentGeneration = new List<Chromosome>(population);
             for (int i = 0; i < population; i++)
             {
                 Chromosome chromosome = new Chromosome();
-                chromosome.Fitness = CalculateFitness(chromosome, fitness);
+                chromosome.Fitness = CalculateFitness(chromosome, _fitness);
                 CurrentGeneration.Add(chromosome);
             }
         }
+
+
+
+
+
 
         /// <summary>
         /// During each successive generation, a proportion of the existing population is selected to breed a new generation
@@ -42,86 +50,121 @@ namespace VLAGenetics.Logic
         /// <returns></returns>
         public void Selection()
         {
-            Individuals individuals = new Individuals();
-            IndividualsPairs = new List<Individuals>(CurrentGeneration.Count);
+            Individual individual = new Individual();
+
+            IndividualPairs = new List<Individual>(Population);
             CurrentGeneration.Sort();
             CurrentGeneration.Reverse();
+            int chances = 1;
 
-            foreach (Chromosome _ in CurrentGeneration)
+            foreach (Chromosome chrome in CurrentGeneration)
             {
                 Random random = new Random();
-                int value1 = 0;
-                int value2 = 0;
-                while (value1 == value2)
-                {
-                    value1 = random.Next(0, CurrentGeneration.Count - 1);
-                    value2 = random.Next(0, CurrentGeneration.Count - 1);
-                }
-                individuals.ParentOne = CurrentGeneration.ToArray()[value1];
-                individuals.ParentTwo = CurrentGeneration.ToArray()[value2];
-                IndividualsPairs.Add(individuals);
+
+                //The least fit will be dropped
+                int value1 = random.Next(0, chances);
+                if (chances == Population) chances-=2;
+                int value2 = random.Next(0, chances+1);
+                individual.ParentOne = CurrentGeneration.ToArray()[value1];
+                individual.ParentTwo = CurrentGeneration.ToArray()[value2];
+                individual.TotalFitness = individual.ParentOne.Fitness + individual.ParentTwo.Fitness;
+                IndividualPairs.Add(individual);
+                chances++;
             }
         }
 
         public void Crossover()
         {
-            CrossoverPair = new List<Chromosome>(CurrentGeneration.Count);
+            //Store results of new List of Chromosomes after cross over
+            CrossoverPair = new List<Chromosome>(Population);
 
-            foreach (Individuals individuals in IndividualsPairs)
+            //Sort so fiter have better properbility
+
+            foreach (Individual individual in IndividualPairs)
             {
-                if(CrossoverPair.Count == IndividualsPairs.Capacity) continue;
-                Individuals individual = new Individuals();
-                Random random = new Random(Convert.ToInt32(DateTime.Now.Ticks % Int16.MaxValue));
-                bool doCrossover = (((random.Next() % 100) + 1) < CrossoverProbability);
-                if(doCrossover)
+                
+                //Initialise new offspring from the individual generated from selection
+                var r = new Random(Convert.ToInt32(DateTime.Now.Ticks % Int16.MaxValue));
+                bool crossover = (((r.Next() % 100) + 1) < CrossoverProbability);
+
+                if (crossover)
                 {
-                    individual.ParentOne = GenerateChild(individuals);
-                    CrossoverPair.Add(individual.ParentOne);
+                    Chromosome offspring = GenerateChild(individual);
+                    CrossoverPair.Add(offspring);
                 }
                 else
                 {
-                    individual.ParentOne = individuals.ParentOne;
-                    individual.ParentTwo = individuals.ParentTwo;
                     CrossoverPair.Add(individual.ParentOne);
                     CrossoverPair.Add(individual.ParentTwo);
                 }
             }
+            if
+            (CrossoverPair.Count > 10)
+            {
+                CrossoverPair.RemoveRange(Population, CrossoverPair.Count - Population);
+            }
+        }
+
+        public void Mutation()
+        {
+            MutatedPair = new List<Chromosome>(Population);
+            
+            foreach (Chromosome chromosome in CrossoverPair)
+            {
+                Random random = new Random();
+                
+                bool mutation = random.Next(0, 100) < MutationProbability;
+                if (mutation)
+                {
+                    Chromosome newChromosome = new Chromosome();
+                    string newTraint = "";
+                    foreach (char trait in chromosome.StringBinaryEncoding)
+                    {
+                        newTraint += trait == '1' ? 0 : 1;
+                    }
+                    newChromosome.StringBinaryEncoding = newTraint;
+                    MutatedPair.Add(newChromosome);
+                }
+                else
+                {
+                    MutatedPair.Add(chromosome);
+                }
+            }
+
+            //======================
+            MutatedPair.Sort();
+            MutatedPair.Reverse();
+            int count = 0;
+            foreach (var chromosome in MutatedPair)
+            {
+                if (chromosome.Fitness == MutatedPair[0].Fitness)
+                    count++;
+            }
+            currentHighestFitness = MutatedPair[0].Fitness * count;
         }
 
 
-        private Chromosome GenerateChild(Individuals pair)
+        #region functions
+        /// <summary>
+        /// Random crossover point will be used to mix genetic information
+        /// </summary>
+        /// <param name="pair"></param>
+        /// <returns></returns>
+        private Chromosome GenerateChild(Individual pair)
         {
-            Byte[] parentOne = GetByteArrayFromString(pair.ParentOne.StringEncodingOneAndZeros);
-            Byte[] parentTwo = GetByteArrayFromString(pair.ParentTwo.StringEncodingOneAndZeros);
+            byte[] parentOne = Helper.StringToBinayByte(pair.ParentOne.StringBinaryEncoding);
+            byte[] parentTwo = Helper.StringToBinayByte(pair.ParentTwo.StringBinaryEncoding);
 
             Chromosome chromosome = new Chromosome();
             for (int i = 0; i < parentOne.Length; i++)
             {
                 parentOne[i] = (byte)(parentOne[i] | parentTwo[i]);
             }
-            chromosome.StringEncodingOneAndZeros = GetStringFromByteArray(parentOne);
-            //TODO parse StringEncodingOneAndZeros
+            chromosome.StringBinaryEncoding = Helper.BinaryByteToString(parentOne);
             return chromosome;
         }
 
-        private static byte[] GetByteArrayFromString(string stringEncoding)
-        {
-            List<byte> binaryEncoded = new List<byte>();
-            foreach (Char bits in stringEncoding)
-                binaryEncoded.Add(bits == '1' ? (byte)1 : (byte)0);
-
-            return binaryEncoded.ToArray();
-        }
-
-        private static string GetStringFromByteArray(IEnumerable<byte> binaryEncoded)
-        {
-            string stringEncoding = string.Empty;
-            foreach (byte bits in binaryEncoded)
-                stringEncoding += bits;
-            return stringEncoding;
-        }
-
-        private static int CalculateFitness(Chromosome pair, Chromosome fitness)
+        public static int CalculateFitness(Chromosome pair, Chromosome fitness)
         {
             int fitnessPoint = 0;
             if (pair.Encoding.AbilityOne == fitness.Encoding.AbilityOne 
@@ -146,5 +189,6 @@ namespace VLAGenetics.Logic
                 && fitness.Encoding.Eyes != Encoding.Eyes.Ignore) fitnessPoint++;
             return fitnessPoint;
         }
+        #endregion
     }
 }

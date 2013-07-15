@@ -9,16 +9,40 @@ namespace VLAGenetics.Logic
     /// </summary>
     public class Chromosome : IComparable<Chromosome>
     {
-        private readonly Encoding.Traits _encoding;
+        private Encoding.Traits _encoding;
+        private string _stringBinaryEncoding;
+
+        public int Fitness;
 
         public  Encoding.Traits Encoding
         {
             get { return _encoding; }
         }
 
-        public int Fitness;
-        public string StringEncoding;
-        public string StringEncodingOneAndZeros;
+        public string StringBinaryEncoding
+        {
+            get {return _stringBinaryEncoding; }
+            set
+            {
+                if (_stringBinaryEncoding == value) return;
+                _encoding.Dimples = (Encoding.Dimples)(int.Parse(value[0].ToString()));
+                _encoding.Handedness = (Encoding.Handedness)(int.Parse(value[1].ToString()));
+                _encoding.Freckles = (Encoding.Freckles)(int.Parse(value[2].ToString()));
+                _encoding.Hair = (Encoding.Hair)(int.Parse(value[3].ToString()));
+                _encoding.Height = (Encoding.Height)(int.Parse(value[4].ToString()));
+                _encoding.Eyes = (Encoding.Eyes)(int.Parse(value[5].ToString()));
+                _encoding.BloodType = (Encoding.BloodType)(int.Parse(value[6].ToString()));
+                _encoding.AbilityOne = (Encoding.AbilityOne)(int.Parse(value[7].ToString()));
+                _encoding.AbilityTwo = (Encoding.AbilityTwo)(int.Parse(value[8].ToString()));
+                _encoding.AbilityThree = (Encoding.AbilityThree)(int.Parse(value[9].ToString()));
+                _stringBinaryEncoding = value;
+            }
+        }
+
+        public string StringTraitEncoding
+        {
+            get { return StringEncoder(_encoding); }
+        }
 
         public Chromosome()
         {
@@ -36,8 +60,7 @@ namespace VLAGenetics.Logic
             _encoding.AbilityTwo = (Encoding.AbilityTwo)(randomValues.Next() % 2);
             _encoding.AbilityThree = (Encoding.AbilityThree)(randomValues.Next() % 2);
 
-            StringEncoding = StringEncoder(_encoding);
-            StringEncodingOneAndZeros = StringEncoderOneAndZeros(_encoding);
+            _stringBinaryEncoding = StringBinaryEncoder(_encoding);
             Thread.Sleep(1);
         }
 
@@ -63,37 +86,36 @@ namespace VLAGenetics.Logic
             _encoding.AbilityTwo = abilityTwo;
             _encoding.AbilityThree = abilityThree;
 
-            StringEncoding = StringEncoder(_encoding);
-            StringEncodingOneAndZeros = StringEncoderOneAndZeros(_encoding);
+            _stringBinaryEncoding = StringBinaryEncoder(_encoding);
             Thread.Sleep(1);
         }
 
-        private string StringEncoder(Encoding.Traits encoding)
+        private static string StringEncoder(Encoding.Traits encoding)
         {
-           return StringEncoding = encoding.Dimples + "-" +
-                             encoding.Handedness + "-" +
-                             encoding.Freckles + "-" +
-                             encoding.Hair + "-" +
-                             encoding.Height + "-" +
-                             encoding.Eyes + "-" +
-                             encoding.BloodType + "-" +
-                             encoding.AbilityOne + "-" +
-                             encoding.AbilityTwo + "-" +
-                             encoding.AbilityThree;
+           return  encoding.Dimples + "-" +
+               encoding.Handedness + "-" +
+               encoding.Freckles + "-" +
+               encoding.Hair + "-" +
+               encoding.Height + "-" +
+               encoding.Eyes + "-" +
+               encoding.BloodType + "-" +
+               encoding.AbilityOne + "-" +
+               encoding.AbilityTwo + "-" +
+               encoding.AbilityThree;
         }
 
-        private string StringEncoderOneAndZeros(Encoding.Traits encoding)
+        private static string StringBinaryEncoder(Encoding.Traits encoding)
         {
-            return StringEncoding = (int)encoding.Dimples +""+
-                              (int)encoding.Handedness +
-                              (int)encoding.Freckles +
-                              (int)encoding.Hair+
-                              (int)encoding.Height +
-                              (int)encoding.Eyes +
-                              (int)encoding.BloodType +
-                              (int)encoding.AbilityOne +
-                              (int)encoding.AbilityTwo +
-                              (int)encoding.AbilityThree;
+            return (int)encoding.Dimples +""+
+                (int)encoding.Handedness +
+                (int)encoding.Freckles +
+                (int)encoding.Hair+
+                (int)encoding.Height +
+                (int)encoding.Eyes +
+                (int)encoding.BloodType +
+                (int)encoding.AbilityOne +
+                (int)encoding.AbilityTwo +
+                (int)encoding.AbilityThree;
         }
 
 

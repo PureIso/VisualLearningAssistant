@@ -55,6 +55,8 @@
     <Compile Include="Logic\Chromosome.cs" />
     <Compile Include="Logic\Encoding.cs" />
     <Compile Include="Logic\Genetics.cs" />
+    <Compile Include="Logic\Helper.cs" />
+    <Compile Include="Logic\Individual.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>

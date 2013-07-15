@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
-    <Grid Height="382">
+    <Grid>
         <!-- Top Grid-->
         <Grid VerticalAlignment="Top" Background="Beige">
             <Button
@@ -25,21 +25,21 @@
         </Grid>
         <!-- Option Grid-->
         <Grid
-         Height="262"
+         Height="215"
          Margin="0,36,0,0"
          VerticalAlignment="Top"
          Background="#FFDCDC8D">
             <TextBox
              VerticalScrollBarVisibility="Visible"   
             x:Name="GeneticTextBox"
-            Height="143"
-            Margin="10,27,34,0"
+            Height="111"
+            Margin="119,8,8,0"
             VerticalAlignment="Top"/>
             <Grid
-            Width="523"
-            Height="71"
+            Width="547"
+            Height="55"
             HorizontalAlignment="Left"
-            Margin="10,181,0,0"
+            Margin="10,160,0,0"
             VerticalAlignment="Top">
                 <Rectangle Margin="0,0,0,5" Fill="#FFA6C097" Stroke="Black"/>
                 <Path
@@ -95,19 +95,20 @@
             </Grid>
             <Path
             Height="1"
-            Margin="6,175,10,0"
+            Margin="8,155,8,0"
             VerticalAlignment="Top"
             Data="M11,37 L555,34"
             Fill="Black"
             Stretch="Fill"
             Stroke="Black"
             StrokeThickness="5"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="34,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <TextBox x:Name="HT" HorizontalAlignment="Left" Height="23" Margin="435,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="HT2" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         </Grid>
         <Canvas
          x:Name="MainCanvas"
-         Margin="0,303,0,0"
          Background="Orange"
-         RenderTransformOrigin="0.5,0.5"/>
+         RenderTransformOrigin="0.5,0.5" Margin="0,255,0,0"/>
     </Grid>
 </UserControl>
