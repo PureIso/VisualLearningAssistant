@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Threading;
-using System.Windows.Media;
 using System.Windows.Threading;
 using VLAGenetics.Logic;
 using VLAPluginLib;
@@ -18,42 +17,31 @@ namespace VLAGenetics
             InitializeComponent();
         }
 
-        private Genetics gen;
-        private Chromosome fitness;
+        private Genetics _gen;
+        private Chromosome _fitness;
+        private bool _stop;
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             GeneticTextBox.Clear();
-            fitness = new Chromosome(
-                Encoding.Dimples.Ignore,
-                Encoding.Handedness.RightHanded,
-                Encoding.Freckles.Ignore,
-                Encoding.Hair.Ignore,
-                Encoding.Height.Tall,
-                Encoding.Eyes.Ignore,
-                Encoding.BloodType.Ignore,
-                Encoding.AbilityOne.Speed,
-                Encoding.AbilityTwo.Strength,
-                Encoding.AbilityThree.ThunderStrike) {Fitness = 5};
+            _fitness = new Chromosome("0000000001") {Fitness = 1};
 
-            gen = new Genetics(10, fitness);
+            _gen = new Genetics(10, _fitness);
             GeneticTextBox.Clear();
             HT.Clear();
             HT2.Clear();
 
-            GeneticTextBox.Text = "Fitness:" ;
-            GeneticTextBox.Text += "===============================================:" ;
-            GeneticTextBox.Text += fitness.StringTraitEncoding ;
-            GeneticTextBox.Text += "===============================================:" ;
-            GeneticTextBox.Text += "Number: "+fitness.Fitness ;
-            GeneticTextBox.Text += "===============================================:" ;
-            foreach (Chromosome individual in gen.CurrentGeneration)
+            GeneticTextBox.Text = "Fitness:" + Environment.NewLine + "Number: " + _fitness.Fitness;
+            GeneticTextBox.Text += "===================================:" +Environment.NewLine;
+            GeneticTextBox.Text += _fitness.StringBinaryEncoding ;
+            GeneticTextBox.Text += "===================================:" + Environment.NewLine;
+
+            foreach (Chromosome individual in _gen.InitialGeneration)
             {
-                GeneticTextBox.Text += individual.StringTraitEncoding + " Fitness: " + individual.Fitness
+                GeneticTextBox.Text += individual.StringBinaryEncoding + " Fitness: " + individual.Fitness
                     +Environment.NewLine;
             }
-            GeneticTextBox.Text += "===============================================:" ;
-
+            GeneticTextBox.Text += "===================================:" + Environment.NewLine;
 
             Thread ot = new Thread(It);
             ot.Start();
@@ -61,67 +49,44 @@ namespace VLAGenetics
 
         private void It()
         {
-            int count = 999;
-            int goal = 0;
+            const int count = 999;
             int overall = 0;
+
             for (int index = 0; index <= count; index++)
             {
-                if (goal == 30) break;
-                goal = 0;
-                gen.Selection();
-                
+                if (_stop)break;
 
-                SetText("Match: "+index +" Highest Fitness: ");
-                SetText( "===============================================:"+gen.IndividualPairs.Count );
-                foreach (Individual individual in gen.IndividualPairs)
-                {
-                    SetText("------------------------------------------" );
-                    SetText( individual.ParentOne.StringBinaryEncoding + " :Match: " + individual.ParentTwo.StringBinaryEncoding
-                        );
-                    SetText( individual.ParentOne.Fitness + " :Match: " + individual.ParentTwo.Fitness
-                        );
-                    SetText( "------------------------------------------" );
-                }
-                SetText( "===============================================:" );
+                //Select Pairs based on current generation
+                _gen.Selection();
+                _gen.Crossover();
+                _gen.Mutation();
 
-                gen.Crossover();
-                SetText("Before Mutation : " + index );
-                SetText("===============================================:" + gen.CrossoverPair.Count +Environment.NewLine);
-                foreach (Chromosome individual in gen.CrossoverPair)
-                {
-                    SetText( individual.StringBinaryEncoding );
-                }
-                SetText("===============================================:" );
+                SetText("New Generation ( "+index+" )After Mutation." );
+                SetText("===================================:" + _gen.MutatedPair.Count );
 
-                gen.Mutation();
-                SetText("After Mutation : " + index );
-                SetText("===============================================:" + gen.MutatedPair.Count );
-                int iz = 0;
-                
-                foreach (Chromosome individual in gen.MutatedPair)
+                for(int i = 0; i < _gen.MutatedPair.Count; i++)
                 {
+                    Chromosome chromosome = _gen.MutatedPair[i];
+
                     string star = "";
-                    if (individual.Fitness == fitness.Fitness)
-                    {
-                        star += "***";
-                        goal++;
-                    }
-
-                    if (gen.MutatedPair[iz].StringBinaryEncoding == gen.CrossoverPair[iz].StringBinaryEncoding)
+                    if (chromosome.Fitness == _fitness.Fitness) star += "***";
+                    if (chromosome.StringBinaryEncoding == _gen.CrossoverPair[i].StringBinaryEncoding)
                         star += " No Mute";
-                    SetText(individual.StringBinaryEncoding + " " + star);
 
-                    iz++;
+                    SetText(chromosome.StringBinaryEncoding + " " + star);
                 }
                 SetText("===============================================:");
 
-                SetText2(gen.currentHighestFitness + " :: " + index);
+                int currenthighest = _gen.CurrentTotal();
+                SetText2(currenthighest + " :: " + index);
 
-                if (gen.currentHighestFitness > overall)
-                {
-                    overall = gen.currentHighestFitness;
-                    SetText3(overall.ToString());
-                }
+                if (currenthighest <= overall) 
+                    continue;
+
+                overall = currenthighest;
+                SetText3(overall.ToString());
+                if (currenthighest == _fitness.Fitness * _gen.InitialGeneration.Count)
+                    break;
             }
 
 
@@ -179,6 +144,11 @@ namespace VLAGenetics
                 EntryPoint.HostLogger(e.Message, LogType.Error);
                 throw new Exception(e.Message);
             }
+        }
+
+        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _stop = true;
         }
 
     }

@@ -9,119 +9,64 @@ namespace VLAGenetics.Logic
     /// </summary>
     public class Chromosome : IComparable<Chromosome>
     {
-        private Encoding.Traits _encoding;
-        private string _stringBinaryEncoding;
+        #region variables
+        private readonly string _stringBinaryEncoding;
+        private readonly byte[] _bitBinaryEncoding;
+        #endregion
 
-        public int Fitness;
-
-        public  Encoding.Traits Encoding
+        #region properties
+        public int Fitness { get; set; }
+        public byte[] ByteBinaryEncoding
         {
-            get { return _encoding; }
+            get { return _bitBinaryEncoding; }
         }
-
         public string StringBinaryEncoding
         {
-            get {return _stringBinaryEncoding; }
-            set
-            {
-                if (_stringBinaryEncoding == value) return;
-                _encoding.Dimples = (Encoding.Dimples)(int.Parse(value[0].ToString()));
-                _encoding.Handedness = (Encoding.Handedness)(int.Parse(value[1].ToString()));
-                _encoding.Freckles = (Encoding.Freckles)(int.Parse(value[2].ToString()));
-                _encoding.Hair = (Encoding.Hair)(int.Parse(value[3].ToString()));
-                _encoding.Height = (Encoding.Height)(int.Parse(value[4].ToString()));
-                _encoding.Eyes = (Encoding.Eyes)(int.Parse(value[5].ToString()));
-                _encoding.BloodType = (Encoding.BloodType)(int.Parse(value[6].ToString()));
-                _encoding.AbilityOne = (Encoding.AbilityOne)(int.Parse(value[7].ToString()));
-                _encoding.AbilityTwo = (Encoding.AbilityTwo)(int.Parse(value[8].ToString()));
-                _encoding.AbilityThree = (Encoding.AbilityThree)(int.Parse(value[9].ToString()));
-                _stringBinaryEncoding = value;
-            }
+            get { return _stringBinaryEncoding; }
         }
+        #endregion
 
-        public string StringTraitEncoding
-        {
-            get { return StringEncoder(_encoding); }
-        }
-
+        #region Constructor
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public Chromosome()
         {
             //Randomize the chromosomes
-            Random randomValues = new Random(Convert.ToInt32(DateTime.Now.Ticks % Int32.MaxValue));
+            _bitBinaryEncoding = new byte[10];
+            Random randomValues = new Random(Convert.ToInt32(DateTime.Now.Ticks %Int16.MaxValue));
 
-            _encoding.Dimples = (Encoding.Dimples)(randomValues.Next() % 2);
-            _encoding.Handedness = (Encoding.Handedness)(randomValues.Next() % 2);
-            _encoding.Freckles = (Encoding.Freckles)(randomValues.Next() % 2);
-            _encoding.Hair = (Encoding.Hair)(randomValues.Next() % 2);
-            _encoding.Height = (Encoding.Height)(randomValues.Next() % 2);
-            _encoding.Eyes = (Encoding.Eyes)(randomValues.Next() % 2);
-            _encoding.BloodType = (Encoding.BloodType)(randomValues.Next() % 2);
-            _encoding.AbilityOne = (Encoding.AbilityOne)(randomValues.Next() % 2);
-            _encoding.AbilityTwo = (Encoding.AbilityTwo)(randomValues.Next() % 2);
-            _encoding.AbilityThree = (Encoding.AbilityThree)(randomValues.Next() % 2);
-
-            _stringBinaryEncoding = StringBinaryEncoder(_encoding);
+            //Modulus operation to produce 1 or 0
+            for (int i = 0; i < _bitBinaryEncoding.Length; i++)
+            {
+                _bitBinaryEncoding[i] = (byte)(randomValues.Next() % 2);
+            }
+            _stringBinaryEncoding = Helper.BinaryByteToString(_bitBinaryEncoding);
             Thread.Sleep(1);
         }
 
-        public Chromosome(Encoding.Dimples dimples,
-            Encoding.Handedness handedness,
-            Encoding.Freckles freckles,
-            Encoding.Hair hair,
-            Encoding.Height height,
-            Encoding.Eyes eye,
-            Encoding.BloodType bloodType,
-            Encoding.AbilityOne abilityOne,
-            Encoding.AbilityTwo abilityTwo,
-           Encoding.AbilityThree abilityThree)
+        public Chromosome(string byteString)
         {
-            _encoding.Dimples = dimples;
-            _encoding.Handedness = handedness;
-            _encoding.Freckles = freckles;
-            _encoding.Hair = hair;
-            _encoding.Height = height;
-            _encoding.Eyes = eye;
-            _encoding.BloodType = bloodType;
-            _encoding.AbilityOne = abilityOne;
-            _encoding.AbilityTwo = abilityTwo;
-            _encoding.AbilityThree = abilityThree;
-
-            _stringBinaryEncoding = StringBinaryEncoder(_encoding);
+            //Randomize the chromosomes
+            _bitBinaryEncoding = Helper.StringToBinayByte(byteString);
+            _stringBinaryEncoding = byteString;
             Thread.Sleep(1);
         }
 
-        private static string StringEncoder(Encoding.Traits encoding)
+        public Chromosome(byte[] bytes)
         {
-           return  encoding.Dimples + "-" +
-               encoding.Handedness + "-" +
-               encoding.Freckles + "-" +
-               encoding.Hair + "-" +
-               encoding.Height + "-" +
-               encoding.Eyes + "-" +
-               encoding.BloodType + "-" +
-               encoding.AbilityOne + "-" +
-               encoding.AbilityTwo + "-" +
-               encoding.AbilityThree;
+            //Randomize the chromosomes
+            _stringBinaryEncoding = Helper.BinaryByteToString(bytes);
+            _bitBinaryEncoding = bytes;
+            Thread.Sleep(1);
         }
+        #endregion
 
-        private static string StringBinaryEncoder(Encoding.Traits encoding)
-        {
-            return (int)encoding.Dimples +""+
-                (int)encoding.Handedness +
-                (int)encoding.Freckles +
-                (int)encoding.Hair+
-                (int)encoding.Height +
-                (int)encoding.Eyes +
-                (int)encoding.BloodType +
-                (int)encoding.AbilityOne +
-                (int)encoding.AbilityTwo +
-                (int)encoding.AbilityThree;
-        }
-
-
+        #region Method
         public int CompareTo(Chromosome other)
         {
             return Fitness.CompareTo(other.Fitness);
         }
+        #endregion
     }
 }

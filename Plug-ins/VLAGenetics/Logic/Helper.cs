@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace VLAGenetics.Logic
 {
@@ -10,19 +9,20 @@ namespace VLAGenetics.Logic
         public static byte[] StringToBinayByte(string stringEncoding)
         {
             List<byte> binaryEncoded = new List<byte>();
-            foreach (Char bits in stringEncoding)
+            foreach( char bits in stringEncoding)
+            {
                 binaryEncoded.Add(bits == '1' ? (byte)1 : (byte)0);
-
+            }
             return binaryEncoded.ToArray();
         }
 
         public static string BinaryByteToString(IEnumerable<byte> binaryEncoded)
         {
-            string stringEncoding = string.Empty;
+            string stringEncoding = String.Empty;
             foreach (byte bits in binaryEncoded)
                 stringEncoding += bits;
+                
             return stringEncoding;
         }
-
     }
 }

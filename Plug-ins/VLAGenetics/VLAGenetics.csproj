@@ -53,7 +53,6 @@
     </Compile>
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Logic\Chromosome.cs" />
-    <Compile Include="Logic\Encoding.cs" />
     <Compile Include="Logic\Genetics.cs" />
     <Compile Include="Logic\Helper.cs" />
     <Compile Include="Logic\Individual.cs" />

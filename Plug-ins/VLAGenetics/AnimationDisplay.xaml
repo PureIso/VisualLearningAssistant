@@ -105,6 +105,7 @@
             <Button Content="Button" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
             <TextBox x:Name="HT" HorizontalAlignment="Left" Height="23" Margin="435,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="HT2" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="28,66,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         </Grid>
         <Canvas
          x:Name="MainCanvas"
