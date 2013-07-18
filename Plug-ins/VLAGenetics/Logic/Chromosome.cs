@@ -67,6 +67,13 @@ namespace VLAGenetics.Logic
         {
             return Fitness.CompareTo(other.Fitness);
         }
+        public void SetFitnessBasedBinary()
+        {
+            foreach (char bit in StringBinaryEncoding)
+            {
+                Fitness += bit == '1' ? 1 : 0;
+            }
+        }
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-
+﻿
 <!-- 
     Main XAML
     Author: Ola
@@ -20,7 +20,7 @@
             Height="32.5"
             Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"
             Click="StartButtonClick"
-            Content="Huffam Tree"/>
+            Content="Genetic Algorithm"/>
          <Button
             x:Name="AboutButton"
             Height="32.5"

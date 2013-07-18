@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Threading;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using VLAGenetics.Logic;
 using VLAPluginLib;
@@ -17,91 +19,80 @@ namespace VLAGenetics
             InitializeComponent();
         }
 
-        private Genetics _gen;
+        private Genetics _genetics;
+        private int _maxGeneration;
+        private int _maxPopulation;
+        private int _targetPopulation;
+        private int _targetFitnessPoint;
         private Chromosome _fitness;
         private bool _stop;
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GeneticTextBox.Clear();
-            _fitness = new Chromosome("0000000001") {Fitness = 1};
+            StopButton.IsEnabled = true;
 
-            _gen = new Genetics(10, _fitness);
-            GeneticTextBox.Clear();
-            HT.Clear();
-            HT2.Clear();
-
-            GeneticTextBox.Text = "Fitness:" + Environment.NewLine + "Number: " + _fitness.Fitness;
-            GeneticTextBox.Text += "===================================:" +Environment.NewLine;
-            GeneticTextBox.Text += _fitness.StringBinaryEncoding ;
-            GeneticTextBox.Text += "===================================:" + Environment.NewLine;
-
-            foreach (Chromosome individual in _gen.InitialGeneration)
-            {
-                GeneticTextBox.Text += individual.StringBinaryEncoding + " Fitness: " + individual.Fitness
-                    +Environment.NewLine;
-            }
-            GeneticTextBox.Text += "===================================:" + Environment.NewLine;
-
-            Thread ot = new Thread(It);
-            ot.Start();
+            Thread worker = new Thread(Train);
+            worker.Start();
         }
 
-        private void It()
+        private void Train()
         {
-            const int count = 999;
             int overall = 0;
-
-            for (int index = 0; index <= count; index++)
+            for (int index = 0; index <= _maxGeneration; index++)
             {
-                if (_stop)break;
+                Thread.Sleep(1);
+                if (_stop) break;
 
-                //Select Pairs based on current generation
-                _gen.Selection();
-                _gen.Crossover();
-                _gen.Mutation();
+                _genetics.Selection();
+                _genetics.Crossover();
+                _genetics.Mutation();
 
-                SetText("New Generation ( "+index+" )After Mutation." );
-                SetText("===================================:" + _gen.MutatedPair.Count );
+                SetControlText(GeneticTextBox, "======================");
+                SetControlText(GeneticTextBox, "Generation: ( " + index + " ) Post Mutation");
+                SetControlText(GeneticTextBox, "======================");
 
-                for(int i = 0; i < _gen.MutatedPair.Count; i++)
+                int currentFitnessPoint = 0;
+                for (int i = 0; i < _genetics.MutatedPair.Count; i++)
                 {
-                    Chromosome chromosome = _gen.MutatedPair[i];
+                    string results = "";
+                    Chromosome chromosome = _genetics.MutatedPair[i];
 
-                    string star = "";
-                    if (chromosome.Fitness == _fitness.Fitness) star += "***";
-                    if (chromosome.StringBinaryEncoding == _gen.CrossoverPair[i].StringBinaryEncoding)
-                        star += " No Mute";
+                    if (chromosome.Fitness == _fitness.Fitness)
+                    {
+                        currentFitnessPoint += _fitness.Fitness;
+                        results += " *";
+                    }
+                    if (chromosome.StringBinaryEncoding == _genetics.CrossoverPair[i].StringBinaryEncoding)
+                        results += " No Mutation";
 
-                    SetText(chromosome.StringBinaryEncoding + " " + star);
+                    SetControlText(GeneticTextBox, chromosome.StringBinaryEncoding
+                                                   + " " + chromosome.Fitness + results);
                 }
-                SetText("===============================================:");
 
-                int currenthighest = _gen.CurrentTotal();
-                SetText2(currenthighest + " :: " + index);
+                ClearText(CurrentFitnessPointTextBox);
+                SetControlText(CurrentFitnessPointTextBox, currentFitnessPoint + " :: " + index);
 
-                if (currenthighest <= overall) 
+                if (currentFitnessPoint <= overall)
                     continue;
 
-                overall = currenthighest;
-                SetText3(overall.ToString());
-                if (currenthighest == _fitness.Fitness * _gen.InitialGeneration.Count)
+                overall = currentFitnessPoint;
+                ClearText(CurrentHighestFitnessPointTextBox);
+                SetControlText(CurrentHighestFitnessPointTextBox, overall.ToString());
+                if (currentFitnessPoint >= _targetFitnessPoint)
                     break;
             }
-
-
         }
 
-        private void SetText(string text)
+        private void ClearText(TextBox textbox)
         {
             try
             {
-                if (GeneticTextBox.Dispatcher.CheckAccess())
+                if (textbox.Dispatcher.CheckAccess())
                 {
-                    GeneticTextBox.Text += text + Environment.NewLine;
+                    textbox.Clear();
                 }
                 else
-                    GeneticTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, new SetText(SetText), text);
+                    textbox.Dispatcher.Invoke(DispatcherPriority.Normal, new ClearControlText(ClearText), textbox);
             }
             catch (Exception e)
             {
@@ -110,34 +101,24 @@ namespace VLAGenetics
             }
         }
 
-        private void SetText2(string text)
+        private void SetControlText(TextBox textbox,string text)
         {
             try
             {
-                if (GeneticTextBox.Dispatcher.CheckAccess())
+                if (textbox.Dispatcher.CheckAccess())
                 {
-                    HT.Text = text + Environment.NewLine;
+                    if (text.Contains("*"))
+                    {
+                        int currentLength = textbox.Text.Length;
+                        textbox.Text += text + Environment.NewLine;
+                        textbox.Select(currentLength, text.Length);
+                        textbox.SelectionBrush = Brushes.Green;
+                    }
+                    else
+                        textbox.Text += text + Environment.NewLine;
                 }
                 else
-                    GeneticTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, new SetText(SetText2), text);
-            }
-            catch (Exception e)
-            {
-                EntryPoint.HostLogger(e.Message, LogType.Error);
-                throw new Exception(e.Message);
-            }
-        }
-
-        private void SetText3(string text)
-        {
-            try
-            {
-                if (GeneticTextBox.Dispatcher.CheckAccess())
-                {
-                    HT2.Text = text + Environment.NewLine;
-                }
-                else
-                    GeneticTextBox.Dispatcher.Invoke(DispatcherPriority.Normal, new SetText(SetText3), text);
+                    textbox.Dispatcher.Invoke(DispatcherPriority.Normal, new SetControlText(SetControlText), textbox, text);
             }
             catch (Exception e)
             {
@@ -149,6 +130,53 @@ namespace VLAGenetics
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
             _stop = true;
+        }
+
+        private void InitButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            GeneticTextBox.Clear();
+            GeneticTextBox.Clear();
+            FitnessTextBox.Clear();
+            BinaryCodeTextBox.Clear();
+            CurrentHighestFitnessPointTextBox.Clear();
+            CurrentFitnessPointTextBox.Clear();
+
+            string stringBinaryValue = "";
+            stringBinaryValue += FlightCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += StrengthCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += SpeedCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += InvisibilityCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += TeleportationCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += IntelligenceCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += MindReadingCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += TelekinesisCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += HealingCheckBox.IsChecked == true ? 1 : 0;
+            stringBinaryValue += ShapeShiftingCheckBox.IsChecked == true ? 1 : 0;
+
+            _fitness = new Chromosome(stringBinaryValue);
+            _fitness.SetFitnessBasedBinary();
+
+            _maxPopulation = int.Parse(MaxPopulationTextBox.Text);
+            _maxGeneration = int.Parse(MaxGenerationTextBox.Text);
+            _targetPopulation = int.Parse(TargetPopulation.Text);
+            _targetFitnessPoint = _targetPopulation*_fitness.Fitness;
+            TargetFitnessPoint.Text = _targetFitnessPoint.ToString();
+
+            _genetics = new Genetics(_maxPopulation, _fitness);
+
+            SetControlText(GeneticTextBox,"======================");
+            SetControlText(GeneticTextBox, "Initial Generation");
+            SetControlText(GeneticTextBox, "======================");
+
+            foreach (Chromosome chromosome in _genetics.CurrentGeneration)
+            {
+                SetControlText(GeneticTextBox,chromosome.StringBinaryEncoding +
+                    " Fitness: " + chromosome.Fitness);
+            }
+
+            SetControlText(FitnessTextBox, _fitness.Fitness.ToString());
+            SetControlText(BinaryCodeTextBox, stringBinaryValue);
+            StartButton.IsEnabled = true;
         }
 
     }

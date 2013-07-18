@@ -50,6 +50,10 @@ namespace VLAPluginLib
     /// <param name="value">The text to set</param>
     public delegate void SetText(string value);
 
+    public delegate void SetControlText(TextBox textbox, string text);
+
+    public delegate void ClearControlText(TextBox textbox);
+
     /// <summary>
     ///     Add Language to the Menu Item
     /// </summary>

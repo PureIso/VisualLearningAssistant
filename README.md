@@ -5,6 +5,12 @@ We believe the key to keep students engaged and interested is to have a more dyn
 
 Visual Learning Assistant is an all in one application. It hopes to help solve these problems by representing information spatially and with images in the hope that students are able to focus on the meaning, reorganize and regroup similar ideas or concepts easily, to make better use of their visual memory, make learning interactive and fun and, by allowing user generated contents make learning open to different ways of illustrations. 
 
+##How to use: copyDebugBuild and copyReleaseBuild##
+~~~
+ 1. Compile Solution using visual studios
+ 2. After successful build run the batch file based on the build type (Release or Debug)
+~~~
+
 ##List of Modules##
 ~~~
  1. Save system logs
@@ -13,11 +19,14 @@ Visual Learning Assistant is an all in one application. It hopes to help solve t
  4. Binary Tree & AVL Binary Tree Illustration
  5. Huffman coding illustration
  6. Dijkstra's shortest path algorithm Illustration 
+ 7. Genetic Algorithm
 ~~~
 ###TODO###
 ~~~
  1. Improve Plug-ins (Info.xaml)
- 2. Complete Genetic Algorithm
+ 2. Improve Genetic Algorithm UI and make animation
+ 3. Genetic Algorithm Menu
+ 4. Release version 4
 ~~~
 
 ###Main Download Link###

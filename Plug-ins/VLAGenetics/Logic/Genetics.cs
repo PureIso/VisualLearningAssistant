@@ -11,7 +11,7 @@ namespace VLAGenetics.Logic
     public class Genetics
     {
         #region variables
-        public List<Chromosome> InitialGeneration;
+        public List<Chromosome> CurrentGeneration;
         public List<Individual> IndividualPairs;
         public List<Chromosome> CrossoverPair;
         public List<Chromosome> MutatedPair;
@@ -21,7 +21,7 @@ namespace VLAGenetics.Logic
         private readonly Chromosome _fitness;
         #endregion
 
-
+        #region Constructor
         /// <summary>
         /// Generate random initial population
         /// </summary>
@@ -34,14 +34,15 @@ namespace VLAGenetics.Logic
             _fitness = fitness;
 
             //Create random chromosome for our population
-            InitialGeneration = new List<Chromosome>(population);
+            CurrentGeneration = new List<Chromosome>(population);
             for(int i = 0; i < _population; i++)
             {
                 Chromosome chromosome = new Chromosome();
                 chromosome.Fitness = CalculateFitness(chromosome, _fitness);
-                InitialGeneration.Add(chromosome);
+                CurrentGeneration.Add(chromosome);
             }
         }
+        #endregion
 
         #region public functions
         /// <summary>
@@ -51,9 +52,9 @@ namespace VLAGenetics.Logic
         public void Selection()
         {
             //Sort current generation is accordance of fitness.
-            InitialGeneration.Sort();
-            InitialGeneration.Reverse();
-            Chromosome[] initialgen = InitialGeneration.ToArray();
+            CurrentGeneration.Sort();
+            CurrentGeneration.Reverse();
+            Chromosome[] initialgen = CurrentGeneration.ToArray();
 
             //Initializing new individual with 2 chromosomes.
             IndividualPairs = new List<Individual>(_population);
@@ -138,21 +139,9 @@ namespace VLAGenetics.Logic
                 {
                     MutatedPair.Add(chromosome);
                 }
-                InitialGeneration = MutatedPair;
+                CurrentGeneration = MutatedPair;
                 Thread.Sleep(1);
             }
-        }
-
-        public int CurrentTotal()
-        {
-            MutatedPair.Sort();
-            MutatedPair.Reverse();
-            int totalFitness = 0;
-            foreach (Chromosome chromosome in MutatedPair)
-            {
-                totalFitness += chromosome.Fitness;
-            }
-            return totalFitness;
         }
         #endregion
 

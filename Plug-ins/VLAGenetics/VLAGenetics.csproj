@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\VisualLearningAssistant\bin\Debug\Plug-in\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -96,10 +96,12 @@
     <ProjectReference Include="..\..\Frameworks\VLAControlLib\VLAControlLib.csproj">
       <Project>{4d85ddc5-17c1-4dc3-b1ff-c97995cb264a}</Project>
       <Name>VLAControlLib</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
       <Project>{2d6cdda3-b88f-4bd3-b225-1be9e57230d3}</Project>
       <Name>VLAPluginLib</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

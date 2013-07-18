@@ -1,0 +1,14 @@
+xcopy %0\..\VisualLearningAssistant\bin\Release\VisualLearningAssistant.exe %0\..\Distribution\Release\
+xcopy %0\..\Frameworks\VLAControlLib\bin\Release\VLAControlLib.dll %0\..\Distribution\Release\
+xcopy %0\..\Frameworks\VLAPluginLib\bin\Release\VLAPluginLib.dll %0\..\Distribution\Release\
+xcopy %0\..\VisualLearningAssistant\bin\Release\Language-Pack\LocalizationDictionary.de-DE.xaml %0\..\Distribution\Release\Language-Pack\
+xcopy %0\..\VisualLearningAssistant\bin\Release\Language-Pack\LocalizationDictionary.en-IE.xaml %0\..\Distribution\Release\Language-Pack\
+xcopy %0\..\VisualLearningAssistant\bin\Release\Language-Pack\LocalizationDictionary.es-ES.xaml %0\..\Distribution\Release\Language-Pack\
+xcopy %0\..\VisualLearningAssistant\bin\Release\Language-Pack\LocalizationDictionary.zh-CN.xaml %0\..\Distribution\Release\Language-Pack\
+xcopy %0\..\Extensions\VLASaveLog\bin\Release\VLASaveLog.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLAArrays\bin\Release\VLAArrays.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLALinkedList\bin\Release\VLALinkedList.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLAShortestPath\bin\Release\VLAShortestPath.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLABinaryTree\bin\Release\VLABinaryTree.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLAHuffman\bin\Release\VLAHuffman.dll %0\..\Distribution\Release\Plug-in\
+xcopy %0\..\Plug-ins\VLAGenetics\bin\Release\VLAGenetics.dll %0\..\Distribution\Release\Plug-in\

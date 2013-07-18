@@ -25,21 +25,20 @@
         </Grid>
         <!-- Option Grid-->
         <Grid
-         Height="215"
          Margin="0,36,0,0"
          VerticalAlignment="Top"
          Background="#FFDCDC8D">
             <TextBox
              VerticalScrollBarVisibility="Visible"   
             x:Name="GeneticTextBox"
-            Height="111"
-            Margin="119,8,8,0"
+            Height="213"
+            Margin="476,8,8,0"
             VerticalAlignment="Top"/>
             <Grid
             Width="547"
             Height="55"
             HorizontalAlignment="Left"
-            Margin="10,160,0,0"
+            Margin="8,232,0,0"
             VerticalAlignment="Top">
                 <Rectangle Margin="0,0,0,5" Fill="#FFA6C097" Stroke="Black"/>
                 <Path
@@ -95,21 +94,46 @@
             </Grid>
             <Path
             Height="1"
-            Margin="8,155,8,0"
+            Margin="8,226,8,0"
             VerticalAlignment="Top"
             Data="M11,37 L555,34"
             Fill="Black"
             Stretch="Fill"
             Stroke="Black"
             StrokeThickness="5"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-            <TextBox x:Name="HT" HorizontalAlignment="Left" Height="23" Margin="435,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="HT2" HorizontalAlignment="Left" Height="23" Margin="47,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="28,66,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <Button x:Name="StartButton" IsEnabled="False"  Content="Start" HorizontalAlignment="Left" Margin="344,45,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <TextBox x:Name="CurrentFitnessPointTextBox" Height="23" IsReadOnly="True" Margin="374,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" Background="LightGray"/>
+            <TextBox x:Name="CurrentHighestFitnessPointTextBox" Height="23" IsReadOnly="True" Margin="374,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" Background="LightGray"/>
+            <Button x:Name="StopButton" IsEnabled="False" Content="Stop" HorizontalAlignment="Left" Margin="343,70,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <CheckBox x:Name="TeleportationCheckBox" Content="Teleportation" HorizontalAlignment="Left" Margin="17,90,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="IntelligenceCheckBox" Content="Intelligence" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="MindReadingCheckBox" Content="Mind Reading" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="97"/>
+            <CheckBox x:Name="TelekinesisCheckBox" Content="Telekinesis" HorizontalAlignment="Left" Margin="114,50,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="FlightCheckBox" Content="Flight" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="StrengthCheckBox" Content="Strength" HorizontalAlignment="Left" Margin="17,30,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="SpeedCheckBox" Content="Speed" HorizontalAlignment="Left" Margin="17,50,0,0" VerticalAlignment="Top" Width="92"/>
+            <CheckBox x:Name="InvisibilityCheckBox" Content="Invisibility" HorizontalAlignment="Left" Margin="17,70,0,0" VerticalAlignment="Top" Width="92"/>
+            <TextBox x:Name="MaxGenerationTextBox" HorizontalAlignment="Left" Height="23" Margin="119,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="100"/>
+            <Label Content="Max Generation:" HorizontalAlignment="Left" Margin="17,107,0,0" VerticalAlignment="Top"/>
+            <Label Content="Binary Code:" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="BinaryCodeTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="119,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Background="LightGray"/>
+            <Label Content="Fitness:" HorizontalAlignment="Left" Margin="60,195,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="FitnessTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="119,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Background="LightGray"/>
+            <TextBox x:Name="MaxPopulationTextBox" HorizontalAlignment="Left" Height="23" Margin="119,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="10"/>
+            <Label Content="Max Population:" HorizontalAlignment="Left" Margin="17,138,0,0" VerticalAlignment="Top"/>
+            <Label Content="Current Max Fitness Point:" HorizontalAlignment="Left" Margin="221,166,0,0" VerticalAlignment="Top"/>
+            <Label Content="Current Fitness Point:" HorizontalAlignment="Left" Margin="247,195,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TargetFitnessPoint" Height="23" IsReadOnly="True" Margin="374,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" Background="LightGray"/>
+            <Label Content="Target Fitness Point:" HorizontalAlignment="Left" Margin="252,140,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TargetPopulation" HorizontalAlignment="Left" Height="23" Margin="374,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" Text="1"/>
+            <Label Content="Target Population:" HorizontalAlignment="Left" Margin="262,113,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="InitButton" Content="Initialize" HorizontalAlignment="Left" Margin="344,20,0,0" VerticalAlignment="Top" Width="75" Click="InitButton_Click"/>
+            <CheckBox x:Name="HealingCheckBox" Content="Healing" HorizontalAlignment="Left" Margin="114,70,0,0" VerticalAlignment="Top" Width="97"/>
+            <CheckBox x:Name="ShapeShiftingCheckBox" Content="Shape Shifting" HorizontalAlignment="Left" Margin="114,90,0,0" VerticalAlignment="Top" Width="110"/>
         </Grid>
         <Canvas
          x:Name="MainCanvas"
          Background="Orange"
-         RenderTransformOrigin="0.5,0.5" Margin="0,255,0,0"/>
+         RenderTransformOrigin="0.5,0.5" Margin="0,328,0,0"/>
     </Grid>
 </UserControl>
