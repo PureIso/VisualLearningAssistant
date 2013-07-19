@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\VisualLearningAssistant\bin\Debug\Plug-in\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="AnimationDisplay.xaml.cs">
       <DependentUpon>AnimationDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Design\Chromosomenode.xaml.cs">
+      <DependentUpon>Chromosomenode.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Logic\Chromosome.cs" />
@@ -87,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Design\Chromosomenode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Main.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,9 +114,7 @@
   <ItemGroup>
     <Resource Include="Images\VLAIllustration.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Design\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

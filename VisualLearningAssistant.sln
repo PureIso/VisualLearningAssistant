@@ -152,9 +152,6 @@ Global
 		{4D85DDC5-17C1-4DC3-B1FF-C97995CB264A} = {339A4375-CB14-4F87-9FBF-5304841BD314}
 		{9341410E-4AA3-416A-B44E-88745DECBE81} = {4C5CD765-7035-4ED0-8845-46A1C426242E}
 	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio

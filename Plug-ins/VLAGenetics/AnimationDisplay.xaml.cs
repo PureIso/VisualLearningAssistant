@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
+using VLAGenetics.Design;
 using VLAGenetics.Logic;
 using VLAPluginLib;
 
@@ -26,17 +27,22 @@ namespace VLAGenetics
         private int _targetFitnessPoint;
         private Chromosome _fitness;
         private bool _stop;
+        private int _drawXaxis = 5;
+        private int _drawYaxis = 5;
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             StopButton.IsEnabled = true;
 
-            Thread worker = new Thread(Train);
-            worker.Start();
+            Train();
+            //TODO: Fix Thread
+            //Thread worker = new Thread(Train);
+            //worker.Start();
         }
 
         private void Train()
         {
+            
             int overall = 0;
             for (int index = 0; index <= _maxGeneration; index++)
             {
@@ -78,8 +84,16 @@ namespace VLAGenetics
                 overall = currentFitnessPoint;
                 ClearText(CurrentHighestFitnessPointTextBox);
                 SetControlText(CurrentHighestFitnessPointTextBox, overall.ToString());
-                if (currentFitnessPoint >= _targetFitnessPoint)
-                    break;
+                if (currentFitnessPoint < _targetFitnessPoint) 
+                    continue;
+
+                foreach (Chromosome chromosome in _genetics.MutatedPair)
+                {
+                    Chromosomenode newDesign = new Chromosomenode();
+                    newDesign.DrawNode(MainCanvas, _drawXaxis, _drawYaxis, chromosome.ByteBinaryEncoding);
+                    _drawYaxis += 15;
+                }
+                break;
             }
         }
 
@@ -134,6 +148,7 @@ namespace VLAGenetics
 
         private void InitButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            MainCanvas.Children.Clear();
             GeneticTextBox.Clear();
             GeneticTextBox.Clear();
             FitnessTextBox.Clear();
@@ -155,6 +170,9 @@ namespace VLAGenetics
 
             _fitness = new Chromosome(stringBinaryValue);
             _fitness.SetFitnessBasedBinary();
+            Chromosomenode newDesign = new Chromosomenode();
+            newDesign.DrawNode(MainCanvas, _drawXaxis, _drawYaxis, _fitness.ByteBinaryEncoding);
+            _drawXaxis += 205;
 
             _maxPopulation = int.Parse(MaxPopulationTextBox.Text);
             _maxGeneration = int.Parse(MaxGenerationTextBox.Text);
@@ -170,9 +188,14 @@ namespace VLAGenetics
 
             foreach (Chromosome chromosome in _genetics.CurrentGeneration)
             {
+                newDesign = new Chromosomenode();
+                newDesign.DrawNode(MainCanvas, _drawXaxis, _drawYaxis, chromosome.ByteBinaryEncoding);
                 SetControlText(GeneticTextBox,chromosome.StringBinaryEncoding +
                     " Fitness: " + chromosome.Fitness);
+                _drawYaxis += 15;
             }
+            _drawXaxis += 205;
+            _drawYaxis = 5;
 
             SetControlText(FitnessTextBox, _fitness.Fitness.ToString());
             SetControlText(BinaryCodeTextBox, stringBinaryValue);
