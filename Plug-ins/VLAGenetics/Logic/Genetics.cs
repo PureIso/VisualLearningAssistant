@@ -100,7 +100,7 @@ namespace VLAGenetics.Logic
                     CrossoverPair.Add(individual.ParentTwo);
                 }
                 //Probability reduces by 2 percent the weaker the chromosome
-                probability -= 2;
+                probability -= 5;
             }
             if (CrossoverPair.Count <= 10) return;
             //Remove everything over the population limit

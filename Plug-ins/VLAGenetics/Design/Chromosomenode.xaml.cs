@@ -7,7 +7,7 @@ namespace VLAGenetics.Design
     /// <summary>
     /// Interaction logic for ChromosomeNode.xaml
     /// </summary>
-    public partial class Chromosomenode : UserControl
+    public partial class Chromosomenode
     {
         public Chromosomenode()
         {

@@ -15,6 +15,7 @@ namespace VLAGenetics
     /// </summary>
     public partial class AnimationDisplay
     {
+        private delegate void DrawNode(Chromosome chromosome);
         public AnimationDisplay()
         {
             InitializeComponent();
@@ -33,11 +34,8 @@ namespace VLAGenetics
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             StopButton.IsEnabled = true;
-
-            Train();
-            //TODO: Fix Thread
-            //Thread worker = new Thread(Train);
-            //worker.Start();
+            Thread worker = new Thread(Train);
+            worker.Start();
         }
 
         private void Train()
@@ -89,8 +87,7 @@ namespace VLAGenetics
 
                 foreach (Chromosome chromosome in _genetics.MutatedPair)
                 {
-                    Chromosomenode newDesign = new Chromosomenode();
-                    newDesign.DrawNode(MainCanvas, _drawXaxis, _drawYaxis, chromosome.ByteBinaryEncoding);
+                    DrawChromosome(chromosome);
                     _drawYaxis += 15;
                 }
                 break;
@@ -140,6 +137,29 @@ namespace VLAGenetics
                 throw new Exception(e.Message);
             }
         }
+        private void DrawChromosome(Chromosome chromosome)
+        {
+            try
+            {
+
+                if (this.Dispatcher.CheckAccess())
+                {
+                    Chromosomenode chromosomenode = new Chromosomenode();
+                    chromosomenode.DrawNode(MainCanvas, _drawXaxis, _drawYaxis, chromosome.ByteBinaryEncoding);
+                   
+                }
+                else
+                {
+                    this.Dispatcher.Invoke(DispatcherPriority.Normal,
+                        new DrawNode(DrawChromosome), chromosome);
+                }
+            }
+            catch (Exception e)
+            {
+                EntryPoint.HostLogger(e.Message, LogType.Error);
+                throw new Exception(e.Message);
+            }
+        }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -148,6 +168,8 @@ namespace VLAGenetics
 
         private void InitButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            _drawXaxis = 5;
+            _drawYaxis = 5;
             MainCanvas.Children.Clear();
             GeneticTextBox.Clear();
             GeneticTextBox.Clear();
@@ -194,6 +216,8 @@ namespace VLAGenetics
                     " Fitness: " + chromosome.Fitness);
                 _drawYaxis += 15;
             }
+
+            MainCanvas.Height = (_maxPopulation * 20 )+ _drawYaxis;
             _drawXaxis += 205;
             _drawYaxis = 5;
 
