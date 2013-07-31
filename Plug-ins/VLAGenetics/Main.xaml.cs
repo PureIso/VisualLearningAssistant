@@ -22,7 +22,7 @@ namespace VLAGenetics
         private void AboutButtonClick(object sender, RoutedEventArgs e)
         {
             //Switch the page to the Info Page
-            //Switcher.Switch(new Info(), EntryPoint.HostDefaultPage);
+            Switcher.Switch(new Info(), EntryPoint.HostDefaultPage);
         }
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Resource Include="Resources\VLAUpdate.xml" />
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

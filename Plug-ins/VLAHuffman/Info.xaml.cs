@@ -22,13 +22,15 @@
 // //	Solution Name:	VLAHuffman	
 // //	File Name:		Info.xaml.cs
 // //	Created:		14-04-2013 Time: 18:47
-// //	Last Edited:	16-04-2013 Time: 20:45
+// //	Last Edited:	31-07-2013 Time: 14:59
 // //=======================================================================//
 // //=======================================================================//
 
 #endregion
 
+using System.Windows;
 using System.Windows.Controls;
+using VLAControlLib;
 
 namespace VLAHuffman
 {
@@ -40,6 +42,11 @@ namespace VLAHuffman
         public Info()
         {
             InitializeComponent();
+        }
+
+        private void BackToMainMenuClick(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Main());
         }
     }
 }

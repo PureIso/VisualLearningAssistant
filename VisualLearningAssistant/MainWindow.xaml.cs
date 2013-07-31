@@ -698,7 +698,7 @@ namespace VisualLearningAssistant
                 SetLog("Checking update...", LogType.Info);
                 SetLabel(StatusLabel, "Checking update.....");
                 //xml location
-                XmlReader xmlReader = XmlReader.Create("http://vla.azurewebsites.net/VLAUpdate.xml");
+                XmlReader xmlReader = XmlReader.Create("https://github.com/PureIso/VisualLearningAssistant/tree/master/VisualLearningAssistant/Resources/VLAUpdate.xml");
                 //read and stop at lateVersion element
                 xmlReader.Read();
                 xmlReader.ReadToFollowing("latestVersion");

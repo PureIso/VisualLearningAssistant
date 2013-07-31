@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Root Element-->
+<vlaVersion>
+  <!--Child Element-->
+  <latestVersion>0.4.0.0</latestVersion>
+  <latestDownload></latestDownload>
+</vlaVersion>

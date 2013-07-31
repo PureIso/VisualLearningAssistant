@@ -82,7 +82,7 @@
                     FontFamily="Segoe UI Semibold"
                     FontWeight="Bold"
                     Header="{DynamicResource Add-On}"
-                    Style="{DynamicResource MenuItemStyle1}" />
+                     />
                 <MenuItem
                     x:Name="HelpMenuItem"
                     FontFamily="Segoe UI Semibold"
@@ -137,7 +137,7 @@
                         BorderThickness="0,1,1,1"
                         HorizontalScrollBarVisibility="Auto"
                         RenderTransformOrigin="0.5,0.5"
-                        VerticalScrollBarVisibility="Visible">
+                        VerticalScrollBarVisibility="Visible" Margin="-1,0,0,0">
                         <StackPanel Width="219" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <TextBlock
                                 x:Name="PlugInHintTextBlock"
@@ -457,10 +457,10 @@
                     TextAlignment="center">
                     <Hyperlink
                         x:Name="Azure"
-                        NavigateUri="http://vla.azurewebsites.net/"
+                        NavigateUri="https://github.com/PureIso/VisualLearningAssistant"
                         RequestNavigate="AzureHandleRequestNavigate"
                         x:FieldModifier="private">
-                        <Run Text="vla.azurewebsites.net" />
+                        <Run Text="github-VisualLearningAssistant" />
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock

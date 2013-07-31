@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VLAControlLib;
 using VLAPluginLib;
 
@@ -23,6 +21,7 @@ namespace VLAGenetics
             base.IllustrationModuleName = new List<string>(
                 new[]
                     {
+                        "Heuristic Search ",
                         "Algorithm",
                     });
             HostDefaultPage = base.HDefaultPage;
