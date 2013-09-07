@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLABinaryTree", "Plug-ins\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLAGenetics", "Plug-ins\VLAGenetics\VLAGenetics.csproj", "{ABF29B87-15B0-4F08-94C4-415EC14BA515}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLANeuralNetwork", "VLANeuralNetwork\VLANeuralNetwork.csproj", "{8B682AA3-8686-4224-BDE8-52F40DDAA09D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,16 @@ Global
 		{ABF29B87-15B0-4F08-94C4-415EC14BA515}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ABF29B87-15B0-4F08-94C4-415EC14BA515}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ABF29B87-15B0-4F08-94C4-415EC14BA515}.Release|x86.ActiveCfg = Release|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,12 +160,10 @@ Global
 		{731256B5-200B-4CF5-85A9-84645BB875B3} = {D87FE5AA-27B2-413F-9EDE-E4E6CCC93ADB}
 		{60CB4372-FB55-4C99-BB24-769BAB39E96F} = {D87FE5AA-27B2-413F-9EDE-E4E6CCC93ADB}
 		{ABF29B87-15B0-4F08-94C4-415EC14BA515} = {D87FE5AA-27B2-413F-9EDE-E4E6CCC93ADB}
+		{8B682AA3-8686-4224-BDE8-52F40DDAA09D} = {D87FE5AA-27B2-413F-9EDE-E4E6CCC93ADB}
 		{2D6CDDA3-B88F-4BD3-B225-1BE9E57230D3} = {339A4375-CB14-4F87-9FBF-5304841BD314}
 		{4D85DDC5-17C1-4DC3-B1FF-C97995CB264A} = {339A4375-CB14-4F87-9FBF-5304841BD314}
 		{9341410E-4AA3-416A-B44E-88745DECBE81} = {4C5CD765-7035-4ED0-8845-46A1C426242E}
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
