@@ -27,6 +27,7 @@ Visual Learning Assistant is an all in one application. It hopes to help solve t
  2. Improve Genetic Algorithm UI and make animation
  3. Genetic Algorithm Menu
  4. Release version 4
+ 5. Continue work on Neural Networks
 ~~~
 
 ###Main Download Link###

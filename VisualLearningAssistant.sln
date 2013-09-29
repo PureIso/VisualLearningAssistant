@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLABinaryTree", "Plug-ins\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLAGenetics", "Plug-ins\VLAGenetics\VLAGenetics.csproj", "{ABF29B87-15B0-4F08-94C4-415EC14BA515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLANeuralNetwork", "VLANeuralNetwork\VLANeuralNetwork.csproj", "{8B682AA3-8686-4224-BDE8-52F40DDAA09D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLANeuralNetwork", "Plug-ins\VLANeuralNetwork\VLANeuralNetwork.csproj", "{8B682AA3-8686-4224-BDE8-52F40DDAA09D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

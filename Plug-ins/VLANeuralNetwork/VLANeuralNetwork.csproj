@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Logic\Connection.cs" />
+    <Compile Include="Logic\NeuralNetwork.cs" />
+    <Compile Include="Logic\Node.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -64,11 +67,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Frameworks\VLAControlLib\VLAControlLib.csproj">
+    <ProjectReference Include="..\..\Frameworks\VLAControlLib\VLAControlLib.csproj">
       <Project>{4d85ddc5-17c1-4dc3-b1ff-c97995cb264a}</Project>
       <Name>VLAControlLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
+    <ProjectReference Include="..\..\Frameworks\VLAPluginLib\VLAPluginLib.csproj">
       <Project>{2d6cdda3-b88f-4bd3-b225-1be9e57230d3}</Project>
       <Name>VLAPluginLib</Name>
     </ProjectReference>
@@ -76,9 +79,7 @@
   <ItemGroup>
     <Content Include="Images\VLAIllustration.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
