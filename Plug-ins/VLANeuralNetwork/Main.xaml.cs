@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VLAControlLib;
 
 namespace VLANeuralNetwork
 {
@@ -27,7 +28,7 @@ namespace VLANeuralNetwork
 
         private void StartButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Switcher.Switch(new NeuralNetworkDisplay(), EntryPoint.HostDefaultPage);
         }
 
         private void AboutButtonClick(object sender, RoutedEventArgs e)

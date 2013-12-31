@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\VisualLearningAssistant\bin\Debug\Plug-in\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,7 +47,7 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Logic\Connection.cs" />
     <Compile Include="Logic\NeuralNetwork.cs" />
-    <Compile Include="Logic\Node.cs" />
+    <Compile Include="Logic\Neuron.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>

@@ -7,7 +7,14 @@ namespace VLANeuralNetwork.Logic
 {
     public struct Connection
     {
-        public Node Node;
+        public Neuron Neuron;
         public double Weight;
+
+        public Connection(Neuron neuron, double weight)
+        {
+            Neuron = neuron;
+            Weight = weight;
+            //neuron.Connections.Add(this);
+        }
     }
 }

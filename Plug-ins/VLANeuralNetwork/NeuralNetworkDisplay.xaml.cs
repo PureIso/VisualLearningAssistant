@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VLAControlLib;
+using VLANeuralNetwork.Logic;
 
 namespace VLANeuralNetwork
 {
@@ -28,6 +29,11 @@ namespace VLANeuralNetwork
         private void BackToMainMenuClick(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Main());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NeuralNetwork a = new NeuralNetwork(2);
         }
     }
 }

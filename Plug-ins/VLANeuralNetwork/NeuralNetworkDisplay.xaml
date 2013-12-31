@@ -117,6 +117,7 @@
                 Stretch="Fill"
                 Stroke="Black"
                 StrokeThickness="5" />
+            <Button Content="Button" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         </Grid>
         <Canvas
             x:Name="mainCanvas"

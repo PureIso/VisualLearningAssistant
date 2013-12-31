@@ -17,12 +17,12 @@ namespace VLANeuralNetwork
         //Loaded when it's discovered by the plug-in service and all base variables are set
         public EntryPoint()
         {
-            base.IllustrationName = "Linked List Illustration";
+            base.IllustrationName = "Neural Network Illustration";
             base.IllustrationVersion = "1.0.0.0";
             base.IllustrationSupportedLanguages = new List<string>(new[] { "English" });
             base.PluginType = PluginType.Illustration;
             base.IllustrationAuthor = "Ola";
-            base.IllustrationDescription = "Linked List Data Structure Illustration";
+            base.IllustrationDescription = "Neural Network Illustration";
             base.IllustrationModuleName = new List<string>(
                 new[]
                     {
